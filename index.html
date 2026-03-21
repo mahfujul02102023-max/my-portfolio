@@ -1059,6 +1059,17 @@
     transform: translateY(0);
   }
 
+  /* Fallback: if JS doesn't run, show everything after 2s */
+  @keyframes revealFallback {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    animation: revealFallback 0s 2s forwards;
+  }
+  .reveal.visible {
+    animation: none;
+  }
+
   .reveal-delay-1 { transition-delay: 0.1s; }
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
@@ -1619,11 +1630,11 @@
     <h2 class="contact-heading">Let's <span style="color: var(--coral);">Connect</span></h2>
     <p class="contact-desc">Whether you want to collaborate on research, discuss sustainability, or explore academic opportunities — I'd love to hear from you.</p>
     <div class="contact-grid">
-      <a href="/cdn-cgi/l/email-protection#cda4bea1acf5fffdfa8dbbaca3a9aca1bee3b8a4a9aca5a2e3a8a9b8" class="contact-item">
+      <a href="mailto:isla8207@vandals.uidaho.edu" class="contact-item">
         <span class="contact-icon">✉️</span>
         <div class="contact-info">
           <div class="contact-info-label">Email</div>
-          <div class="contact-info-value"><span class="__cf_email__" data-cfemail="7f160c131e474d4f483f091e111b1e130c510a161b1e1710511a1b0a">[email&#160;protected]</span></div>
+          <div class="contact-info-value">isla8207@vandals.uidaho.edu</div>
         </div>
       </a>
       <a href="tel:+12089977312" class="contact-item">
@@ -1656,7 +1667,7 @@
   <p>© 2026 Md Mahfujul Islam · Built with <span class="footer-heart">♥</span> and curiosity</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Scroll reveal animations
   const revealEls = document.querySelectorAll('.reveal');
   const revealObserver = new IntersectionObserver((entries) => {
@@ -1694,4 +1705,15 @@
   });
 
   // Navbar background on scroll
-  window.addEventListene
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 80) {
+      nav.style.background = 'rgba(13, 13, 18, 0.95)';
+    } else {
+      nav.style.background = 'rgba(13, 13, 18, 0.7)';
+    }
+  });
+</script>
+
+</body>
+</html>
