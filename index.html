@@ -1,1 +1,1719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md Mahfujul Islam — Researcher, Educator, Scientist</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+  :root {
+    --bg: #0d0d12;
+    --bg-card: #16161e;
+    --bg-elevated: #1e1e2a;
+    --text: #eee8e0;
+    --text-dim: #8a8494;
+    --coral: #ff6b5a;
+    --coral-glow: rgba(255, 107, 90, 0.15);
+    --teal: #3dd6c8;
+    --teal-glow: rgba(61, 214, 200, 0.12);
+    --gold: #f0c850;
+    --gold-glow: rgba(240, 200, 80, 0.12);
+    --violet: #a78bfa;
+    --violet-glow: rgba(167, 139, 250, 0.12);
+    --pink: #f472b6;
+    --blue: #60a5fa;
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* === ANIMATED GRADIENT BACKGROUND === */
+  .gradient-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 20%, rgba(255,107,90,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 60% at 80% 80%, rgba(61,214,200,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 40% at 50% 50%, rgba(167,139,250,0.05) 0%, transparent 50%);
+    animation: gradientShift 15s ease-in-out infinite alternate;
+  }
+
+  @keyframes gradientShift {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+  }
+
+  /* === NAVIGATION === */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(13, 13, 18, 0.7);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--coral), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-links { display: flex; gap: 0.3rem; }
+
+  .nav-links a {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    transition: all 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: var(--text);
+    background: rgba(255,255,255,0.06);
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  /* === HERO === */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    text-align: center;
+  }
+
+  .hero-content { max-width: 800px; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.2rem;
+    background: var(--coral-glow);
+    border: 1px solid rgba(255,107,90,0.2);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--coral);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: popIn 0.6s ease 0.2s forwards;
+  }
+
+  .hero-badge .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--coral);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .hero-name {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: slideUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero-name .gradient-text {
+    background: linear-gradient(135deg, var(--coral) 0%, var(--gold) 40%, var(--teal) 70%, var(--violet) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: shimmer 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 100% center; }
+  }
+
+  .hero-desc {
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    opacity: 0;
+    animation: slideUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: slideUp 0.8s ease 0.8s forwards;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 2rem;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.35s ease;
+  }
+
+  .btn-glow {
+    background: linear-gradient(135deg, var(--coral), #ff8a5c);
+    color: #fff;
+    box-shadow: 0 4px 25px rgba(255,107,90,0.3);
+  }
+
+  .btn-glow:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 35px rgba(255,107,90,0.45);
+  }
+
+  .btn-ghost {
+    background: rgba(255,255,255,0.05);
+    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .btn-ghost:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Floating shapes in hero */
+  .hero-shapes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: floatShape 12s ease-in-out infinite;
+  }
+
+  .shape-1 {
+    width: 300px; height: 300px;
+    top: 10%; left: -5%;
+    background: radial-gradient(circle, rgba(255,107,90,0.12), transparent 70%);
+    animation-delay: 0s;
+  }
+
+  .shape-2 {
+    width: 200px; height: 200px;
+    top: 60%; right: 5%;
+    background: radial-gradient(circle, rgba(61,214,200,0.12), transparent 70%);
+    animation-delay: -4s;
+  }
+
+  .shape-3 {
+    width: 250px; height: 250px;
+    bottom: 10%; left: 30%;
+    background: radial-gradient(circle, rgba(167,139,250,0.1), transparent 70%);
+    animation-delay: -8s;
+  }
+
+  @keyframes floatShape {
+    0%, 100% { transform: translateY(0) scale(1); }
+    33% { transform: translateY(-25px) scale(1.05); }
+    66% { transform: translateY(15px) scale(0.95); }
+  }
+
+  /* === SECTION STYLES === */
+  section { padding: 6rem 3rem; position: relative; }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-tag .tag-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    max-width: 550px;
+    margin-bottom: 3.5rem;
+  }
+
+  /* === ABOUT / BIO === */
+  #about {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-photo-area {
+    position: relative;
+  }
+
+  .photo-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s;
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, var(--coral), var(--teal), var(--violet));
+    z-index: -1;
+    opacity: 0.4;
+  }
+
+  .photo-frame .placeholder-icon { font-size: 3rem; opacity: 0.3; }
+
+  .photo-frame .placeholder-text {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .about-info { padding-top: 0.5rem; }
+
+  .about-text {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+  }
+
+  .about-text strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .quick-facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+
+  .fact-card {
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.3s;
+  }
+
+  .fact-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .fact-icon { font-size: 1.5rem; margin-bottom: 0.6rem; }
+
+  .fact-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 0.3rem;
+  }
+
+  .fact-value {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  /* === EDUCATION === */
+  #education { max-width: 1200px; margin: 0 auto; }
+
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--coral), var(--teal), var(--violet));
+    border-radius: 2px;
+  }
+
+  .timeline-item {
+    position: relative;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.3s;
+  }
+
+  .timeline-item:hover {
+    transform: translateX(6px);
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.35rem;
+    top: 2.5rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--coral);
+    background: var(--bg);
+  }
+
+  .timeline-item:nth-child(2)::before { border-color: var(--teal); }
+  .timeline-item:nth-child(3)::before { border-color: var(--violet); }
+
+  .timeline-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--coral);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-item:nth-child(2) .timeline-date { color: var(--teal); }
+  .timeline-item:nth-child(3) .timeline-date { color: var(--violet); }
+
+  .timeline-item h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-item .timeline-school {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-item .timeline-details {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  /* === EXPERIENCE === */
+  #experience { max-width: 1200px; margin: 0 auto; }
+
+  .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .exp-card {
+    padding: 2rem;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+
+  .exp-card:nth-child(1)::before { background: linear-gradient(90deg, var(--coral), var(--gold)); }
+  .exp-card:nth-child(2)::before { background: linear-gradient(90deg, var(--teal), var(--blue)); }
+  .exp-card:nth-child(3)::before { background: linear-gradient(90deg, var(--violet), var(--pink)); }
+  .exp-card:nth-child(4)::before { background: linear-gradient(90deg, var(--gold), var(--coral)); }
+  .exp-card:nth-child(5)::before { background: linear-gradient(90deg, var(--blue), var(--teal)); }
+  .exp-card:nth-child(6)::before { background: linear-gradient(90deg, var(--pink), var(--violet)); }
+
+  .exp-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255,255,255,0.08);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  }
+
+  .exp-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+  }
+
+  .exp-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .exp-org {
+    font-size: 0.88rem;
+    color: var(--coral);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+  }
+
+  .exp-card p {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  /* === PHOTO GALLERY === */
+  #gallery { max-width: 1200px; margin: 0 auto; }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .gallery-item {
+    aspect-ratio: 4/3;
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.04);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gallery-item:nth-child(1) { grid-row: span 2; aspect-ratio: auto; }
+
+  .gallery-item:hover {
+    transform: scale(1.02);
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  }
+
+  .gallery-item .gallery-placeholder {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+  }
+
+  .gallery-item .gallery-placeholder span { font-size: 2rem; display: block; margin-bottom: 0.5rem; opacity: 0.3; }
+
+  .gallery-item .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+  }
+
+  .gallery-item:hover .overlay { transform: translateY(0); }
+
+  .overlay-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .overlay-desc {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* === SKILLS === */
+  #skills { max-width: 1200px; margin: 0 auto; }
+
+  .skills-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .skill-group {
+    padding: 2rem;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .skill-group-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .skill-group-title .color-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .skill-bar-item { margin-bottom: 1.2rem; }
+  .skill-bar-item:last-child { margin-bottom: 0; }
+
+  .skill-bar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-bar-name {
+    font-size: 0.88rem;
+    font-weight: 500;
+  }
+
+  .skill-bar-pct {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+  }
+
+  .skill-bar-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    border-radius: 100px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .skill-bar-fill.coral { background: linear-gradient(90deg, var(--coral), var(--gold)); }
+  .skill-bar-fill.teal { background: linear-gradient(90deg, var(--teal), var(--blue)); }
+  .skill-bar-fill.violet { background: linear-gradient(90deg, var(--violet), var(--pink)); }
+  .skill-bar-fill.gold { background: linear-gradient(90deg, var(--gold), var(--coral)); }
+
+  /* === PUBLICATIONS === */
+  #publications { max-width: 1200px; margin: 0 auto; }
+
+  .pub-list { list-style: none; }
+
+  .pub-item {
+    padding: 1.8rem 2rem;
+    margin-bottom: 1rem;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-left: 3px solid var(--coral);
+    transition: all 0.3s;
+  }
+
+  .pub-item:nth-child(2) { border-left-color: var(--teal); }
+  .pub-item:nth-child(3) { border-left-color: var(--violet); }
+  .pub-item:nth-child(4) { border-left-color: var(--gold); }
+  .pub-item:nth-child(5) { border-left-color: var(--pink); }
+
+  .pub-item:hover {
+    transform: translateX(6px);
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .pub-item h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+  }
+
+  .pub-item .pub-journal {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--text-dim);
+  }
+
+  /* === CERTIFICATIONS === */
+  #certifications { max-width: 1200px; margin: 0 auto; }
+
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .cert-card {
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s;
+  }
+
+  .cert-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  }
+
+  .cert-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+  }
+
+  .cert-card h4 {
+    font-size: 0.88rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .cert-card .cert-source {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* === HOBBIES === */
+  #hobbies { max-width: 1200px; margin: 0 auto; }
+
+  .hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .hobby-card {
+    padding: 2.5rem 2rem;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hobby-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: var(--radius) var(--radius) 0 0;
+    transition: height 0.4s;
+  }
+
+  .hobby-card:hover::before { height: 5px; }
+
+  .hobby-card:nth-child(1)::before { background: linear-gradient(90deg, var(--coral), var(--gold)); }
+  .hobby-card:nth-child(2)::before { background: linear-gradient(90deg, var(--teal), var(--blue)); }
+  .hobby-card:nth-child(3)::before { background: linear-gradient(90deg, var(--violet), var(--pink)); }
+  .hobby-card:nth-child(4)::before { background: linear-gradient(90deg, var(--gold), var(--coral)); }
+  .hobby-card:nth-child(5)::before { background: linear-gradient(90deg, var(--blue), var(--teal)); }
+  .hobby-card:nth-child(6)::before { background: linear-gradient(90deg, var(--pink), var(--violet)); }
+
+  .hobby-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255,255,255,0.08);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  }
+
+  .hobby-emoji { font-size: 2.5rem; margin-bottom: 1rem; }
+
+  .hobby-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+
+  .hobby-card p {
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* === BLOG / WRITING === */
+  #blog { max-width: 1200px; margin: 0 auto; }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .blog-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.04);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  }
+
+  .blog-cover {
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .blog-cover-gradient {
+    width: 100%;
+    height: 100%;
+  }
+
+  .blog-card:nth-child(1) .blog-cover-gradient { background: linear-gradient(135deg, #1a1a2e, var(--coral), var(--gold)); }
+  .blog-card:nth-child(2) .blog-cover-gradient { background: linear-gradient(135deg, #1a1a2e, var(--teal), var(--blue)); }
+  .blog-card:nth-child(3) .blog-cover-gradient { background: linear-gradient(135deg, #1a1a2e, var(--violet), var(--pink)); }
+
+  .blog-cover-label {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    color: var(--text);
+  }
+
+  .blog-body { padding: 1.8rem; }
+
+  .blog-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    margin-bottom: 0.6rem;
+  }
+
+  .blog-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    line-height: 1.35;
+  }
+
+  .blog-card p {
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+  }
+
+  .blog-read-more {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--coral);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: gap 0.3s;
+  }
+
+  .blog-card:hover .blog-read-more { gap: 0.6rem; }
+
+  /* === CONTACT === */
+  #contact {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-box {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 4rem;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--coral), var(--gold), var(--teal), var(--violet));
+  }
+
+  .contact-heading {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 0.8rem;
+  }
+
+  .contact-desc {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.2rem;
+    background: rgba(255,255,255,0.03);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255,255,255,0.04);
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.3s;
+  }
+
+  .contact-item:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+  }
+
+  .contact-icon { font-size: 1.3rem; }
+
+  .contact-info { text-align: left; }
+
+  .contact-info-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .contact-info-value {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  /* === FOOTER === */
+  footer {
+    text-align: center;
+    padding: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  footer p {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+  }
+
+  footer .footer-heart { color: var(--coral); }
+
+  /* === SCROLL ANIMATIONS === */
+  .reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Fallback: if JS doesn't run, show everything after 2s */
+  @keyframes revealFallback {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    animation: revealFallback 0s 2s forwards;
+  }
+  .reveal.visible {
+    animation: none;
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 900px) {
+    nav { padding: 0.8rem 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(13,13,18,0.95);
+      backdrop-filter: blur(20px);
+      padding: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-photo-area { max-width: 250px; margin: 0 auto; }
+    .quick-facts { grid-template-columns: 1fr; }
+    .skills-container { grid-template-columns: 1fr; }
+    .experience-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-box { padding: 2.5rem 1.5rem; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item:nth-child(1) { grid-row: span 1; }
+    .cert-grid { grid-template-columns: 1fr; }
+    .blog-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 500px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .hobbies-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="gradient-bg"></div>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#" class="nav-logo">Mahfujul</a>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#publications">Publications</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#hobbies">Hobbies</a>
+    <a href="#blog">Writing</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span> PhD Researcher · Environmental Science</div>
+    <h1 class="hero-name">Hi, I'm <span class="gradient-text">Mahfujul Islam</span></h1>
+    <p class="hero-desc">Researcher. Educator. Scientific innovator. Developing sustainable waste-to-resource solutions at the intersection of environmental science and bioenergy production.</p>
+    <div class="hero-actions">
+      <a href="#publications" class="btn btn-glow">View Publications →</a>
+      <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag" style="color: var(--coral);">
+    <span class="tag-dot" style="background: var(--coral);"></span> Who I Am
+  </div>
+  <div class="about-grid">
+    <div class="about-photo-area reveal">
+      <div class="photo-frame">
+        <!-- Replace with your photo: <img src="photo.jpg" alt="..." style="width:100%;height:100%;object-fit:cover;border-radius:14px;"> -->
+        <div class="placeholder-icon">👨‍🔬</div>
+        <div class="placeholder-text">Add your photo here</div>
+      </div>
+    </div>
+    <div class="about-info">
+      <h2 class="section-title reveal">Md Mahfujul <span style="color: var(--coral);">Islam</span></h2>
+      <p class="about-text reveal reveal-delay-1">
+        I am a <strong>PhD student in Environmental Science</strong> at the University of Idaho, driven by a passion for waste management sustainability and bioenergy production. My expertise in environmental science, rooted in a core <strong>Physics background</strong>, enables me to develop advanced waste-to-resource solutions.
+      </p>
+      <p class="about-text reveal reveal-delay-2">
+        With research experience spanning <strong>Bangladesh, France, and the USA</strong>, I combine rigorous methodology with creative problem-solving. I'm passionate about developing sustainable practices and technologies that can make a significant impact on humanity while continuing my advancement as a researcher, educator, and scientific innovator.
+      </p>
+      <div class="quick-facts reveal reveal-delay-3">
+        <div class="fact-card">
+          <div class="fact-icon">🎓</div>
+          <div class="fact-label">Role</div>
+          <div class="fact-value">Graduate Research Assistant</div>
+        </div>
+        <div class="fact-card">
+          <div class="fact-icon">📍</div>
+          <div class="fact-label">Based In</div>
+          <div class="fact-value">Idaho Falls, ID, USA</div>
+        </div>
+        <div class="fact-card">
+          <div class="fact-icon">🔬</div>
+          <div class="fact-label">Focus</div>
+          <div class="fact-value">Waste-to-Resource & Bioenergy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-tag" style="color: var(--teal);">
+    <span class="tag-dot" style="background: var(--teal);"></span> Academic Journey
+  </div>
+  <h2 class="section-title reveal">Educational <span style="color:var(--teal);">Background</span></h2>
+  <p class="section-subtitle reveal">A trajectory from physics fundamentals to environmental science research.</p>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-date">JAN 2023 – DEC 2026 (EXPECTED)</div>
+      <h3>Ph.D. in Environmental Science</h3>
+      <div class="timeline-school">University of Idaho, ID, USA</div>
+      <div class="timeline-details">
+        <strong>Supervisor:</strong> Dr. Ming Hsun Cheng<br>
+        <strong>Thesis:</strong> Formulation of Municipal Solid Waste for Lignocellulosic Hydrolysate Production<br>
+        <strong>GPA:</strong> 3.29 / 4.00<br>
+        <strong>Funded by:</strong> Department of Energy (DOE) · <strong>Collaboration:</strong> Idaho National Laboratory (INL)
+      </div>
+    </div>
+    <div class="timeline-item reveal reveal-delay-1">
+      <div class="timeline-date">2011 – 2012</div>
+      <h3>Master of Science in Physics</h3>
+      <div class="timeline-school">Jahangirnagar University, Bangladesh</div>
+      <div class="timeline-details">
+        <strong>Supervisor:</strong> Professor Dr. Farid Ahmed<br>
+        <strong>Thesis:</strong> Study and Characterization of Rice Husk Ash with Polyester Resin Composite<br>
+        <strong>GPA:</strong> 3.75 / 4.00
+      </div>
+    </div>
+    <div class="timeline-item reveal reveal-delay-2">
+      <div class="timeline-date">2006 – 2011</div>
+      <h3>Bachelor of Science in Physics</h3>
+      <div class="timeline-school">Jahangirnagar University, Bangladesh</div>
+      <div class="timeline-details">
+        <strong>GPA:</strong> 3.35 / 4.00
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-tag" style="color: var(--gold);">
+    <span class="tag-dot" style="background: var(--gold);"></span> Career Path
+  </div>
+  <h2 class="section-title reveal">Research & Work <span style="color:var(--gold);">Experience</span></h2>
+  <p class="section-subtitle reveal">Over a decade of academic teaching, research, and international scientific collaboration.</p>
+  <div class="experience-grid">
+    <div class="exp-card reveal">
+      <div class="exp-date">AUG 2024 – PRESENT</div>
+      <h3>Graduate Research Assistant</h3>
+      <div class="exp-org">University of Idaho, USA</div>
+      <p>Conducting research on lignocellulosic biomass for sugar yield optimization, analyzing data, and ensuring sustainability practices in waste-to-resource conversion.</p>
+    </div>
+    <div class="exp-card reveal reveal-delay-1">
+      <div class="exp-date">MAY – AUG 2023</div>
+      <h3>Summer Research Project</h3>
+      <div class="exp-org">University of Idaho, USA</div>
+      <p>"Quantitative Phase Imaging of Crowding in Single Bacteria" — under the supervision of Dr. Andreas E. Vasdekis (Associate Professor).</p>
+    </div>
+    <div class="exp-card reveal reveal-delay-2">
+      <div class="exp-date">JAN 2023 – MAY 2024</div>
+      <h3>Graduate Teaching Assistant</h3>
+      <div class="exp-org">University of Idaho, USA</div>
+      <p>Grading, tutoring, and conducting laboratory classes for undergraduate physics courses.</p>
+    </div>
+    <div class="exp-card reveal">
+      <div class="exp-date">MAR – JUN 2013</div>
+      <h3>Research Assistant (Internship)</h3>
+      <div class="exp-org">IMPMC Lab, Paris, France</div>
+      <p>Conducted research on "Metal Insulator Transition in Ba(Co,Ni)S₂" — lab experiments, data analysis, and international collaboration at SOLEIL Synchrotron.</p>
+    </div>
+    <div class="exp-card reveal reveal-delay-1">
+      <div class="exp-date">SEP 2014 – OCT 2021</div>
+      <h3>Lecturer (Physics)</h3>
+      <div class="exp-org">Daffodil International University, Bangladesh</div>
+      <p>Conducting undergraduate physics classes — mechanics, electricity & magnetism, thermodynamics, optics, modern physics. Lab sessions, grading, and exam proctoring.</p>
+    </div>
+    <div class="exp-card reveal reveal-delay-2">
+      <div class="exp-date">OCT 2021 – DEC 2022</div>
+      <h3>Lecturer (Physics)</h3>
+      <div class="exp-org">Universal College Bangladesh</div>
+      <p>Teaching, tutoring, conducting lab sessions, and guiding student project work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-tag" style="color: var(--violet);">
+    <span class="tag-dot" style="background: var(--violet);"></span> What I Can Do
+  </div>
+  <h2 class="section-title reveal">Skills & <span style="color:var(--violet);">Expertise</span></h2>
+  <p class="section-subtitle reveal">A blend of experimental techniques, computational tools, and multilingual communication skills.</p>
+  <div class="skills-container">
+    <div class="skill-group reveal">
+      <div class="skill-group-title">
+        <span class="color-dot" style="background: var(--coral);"></span> Experimental Skills
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Lignocellulosic Biomass Processing</span>
+          <span class="skill-bar-pct">90%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill coral" data-width="90%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Microscopy (STM, AFM, TEM, Kerr)</span>
+          <span class="skill-bar-pct">85%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill coral" data-width="85%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Spectroscopy (PL, UV-IR, Raman, UV-VIS)</span>
+          <span class="skill-bar-pct">88%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill coral" data-width="88%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Composite Material Fabrication</span>
+          <span class="skill-bar-pct">82%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill coral" data-width="82%"></div></div>
+      </div>
+    </div>
+    <div class="skill-group reveal reveal-delay-1">
+      <div class="skill-group-title">
+        <span class="color-dot" style="background: var(--teal);"></span> Computer & Tools
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Python</span>
+          <span class="skill-bar-pct">80%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill teal" data-width="80%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">LaTeX</span>
+          <span class="skill-bar-pct">85%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill teal" data-width="85%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">ORIGIN / MS Excel (Data Analysis)</span>
+          <span class="skill-bar-pct">88%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill teal" data-width="88%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">MS Office & Prezi</span>
+          <span class="skill-bar-pct">90%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill teal" data-width="90%"></div></div>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-title">
+        <span class="color-dot" style="background: var(--violet);"></span> Languages
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Bangla (Native)</span>
+          <span class="skill-bar-pct">100%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill violet" data-width="100%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">English (Advanced)</span>
+          <span class="skill-bar-pct">90%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill violet" data-width="90%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">French (Basic)</span>
+          <span class="skill-bar-pct">30%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill violet" data-width="30%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Hindi (Basic)</span>
+          <span class="skill-bar-pct">30%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill violet" data-width="30%"></div></div>
+      </div>
+    </div>
+    <div class="skill-group reveal reveal-delay-1">
+      <div class="skill-group-title">
+        <span class="color-dot" style="background: var(--gold);"></span> Teaching & Leadership
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Academic Teaching</span>
+          <span class="skill-bar-pct">95%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill gold" data-width="95%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Lab Instruction</span>
+          <span class="skill-bar-pct">92%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill gold" data-width="92%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Communication & Collaboration</span>
+          <span class="skill-bar-pct">90%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill gold" data-width="90%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Academic Writing</span>
+          <span class="skill-bar-pct">88%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill gold" data-width="88%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-tag" style="color: var(--pink);">
+    <span class="tag-dot" style="background: var(--pink);"></span> Research Output
+  </div>
+  <h2 class="section-title reveal">Publications & <span style="color:var(--pink);">Conference</span></h2>
+  <p class="section-subtitle reveal">Peer-reviewed journals and conference presentations advancing materials science and sustainability research.</p>
+  <ul class="pub-list">
+    <li class="pub-item reveal">
+      <h4>Pretreatment Strategies for Enhanced Fermentable Sugar Recovery from Composite Lignocellulosic Feedstocks</h4>
+      <div class="pub-journal">Islam, M. M., Kumar, K., Ding, L., & Cheng, M. H. — 2025 AIChE Annual Meeting (Accepted)</div>
+    </li>
+    <li class="pub-item reveal reveal-delay-1">
+      <h4>Study and Characterization of Rice Husk Ash with Polyester Resin Composite</h4>
+      <div class="pub-journal">Md Mahfujul Islam et al. — Daffodil International University Journal of Science and Technology, Vol. 11, Issue 1, January 2016</div>
+    </li>
+    <li class="pub-item reveal reveal-delay-2">
+      <h4>Physical, Mechanical, and Thermal Properties of Sand Reinforced Polyester Resin Composite</h4>
+      <div class="pub-journal">Md Mahfujul Islam et al. — International Letters of Chemistry, Physics and Astronomy, Vol. 56 (2015), pp 123-128</div>
+    </li>
+    <li class="pub-item reveal">
+      <h4>Polarized Raman Spectra of α-Quartz</h4>
+      <div class="pub-journal">Md Mahfujul Islam et al. — International Letters of Chemistry, Physics and Astronomy, Vol. 56 (2015), pp 115-122</div>
+    </li>
+    <li class="pub-item reveal reveal-delay-1">
+      <h4>Photoluminescence in Analysis of Surface and Interfaces of Semiconductor Nanostructures</h4>
+      <div class="pub-journal">Md Mahfujul Islam et al. — International Letters of Chemistry, Physics and Astronomy, Vol. 57 (2015), pp 102-113</div>
+    </li>
+  </ul>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-tag" style="color: var(--blue);">
+    <span class="tag-dot" style="background: var(--blue);"></span> Continuous Learning
+  </div>
+  <h2 class="section-title reveal">Certifications & <span style="color:var(--blue);">Courses</span></h2>
+  <p class="section-subtitle reveal">Professional development in sustainability and renewable energy through Coursera.</p>
+  <div class="cert-grid">
+    <div class="cert-card reveal">
+      <div class="cert-icon">🌱</div>
+      <div>
+        <h4>Become a Sustainable Business Change Agent</h4>
+        <div class="cert-source">Coursera · Specialization</div>
+      </div>
+    </div>
+    <div class="cert-card reveal reveal-delay-1">
+      <div class="cert-icon">⚡</div>
+      <div>
+        <h4>Exploring Renewable Energy Schemes</h4>
+        <div class="cert-source">Coursera</div>
+      </div>
+    </div>
+    <div class="cert-card reveal reveal-delay-2">
+      <div class="cert-icon">🔋</div>
+      <div>
+        <h4>Renewable Energy Technology Fundamentals</h4>
+        <div class="cert-source">Coursera</div>
+      </div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon">🌍</div>
+      <div>
+        <h4>Politics and Economics of International Energy</h4>
+        <div class="cert-source">Coursera</div>
+      </div>
+    </div>
+    <div class="cert-card reveal reveal-delay-1">
+      <div class="cert-icon">♻️</div>
+      <div>
+        <h4>Introduction to Sustainability</h4>
+        <div class="cert-source">Coursera</div>
+      </div>
+    </div>
+    <div class="cert-card reveal reveal-delay-2">
+      <div class="cert-icon">🏢</div>
+      <div>
+        <h4>Sustainable Business: Big Issues, Big Changes</h4>
+        <div class="cert-source">Coursera</div>
+      </div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon">💡</div>
+      <div>
+        <h4>Renewable Energy & Green Building Entrepreneurship</h4>
+        <div class="cert-source">Coursera</div>
+      </div>
+    </div>
+    <div class="cert-card reveal reveal-delay-1">
+      <div class="cert-icon">📊</div>
+      <div>
+        <h4>First Steps in Making the Business Case for Sustainability</h4>
+        <div class="cert-source">Coursera</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOBBIES -->
+<section id="hobbies">
+  <div class="section-tag" style="color: var(--gold);">
+    <span class="tag-dot" style="background: var(--gold);"></span> Beyond Research
+  </div>
+  <h2 class="section-title reveal">Things I <span style="color:var(--gold);">Love</span> Doing</h2>
+  <p class="section-subtitle reveal">Research is my work, but these passions keep my creative spirit alive.</p>
+  <div class="hobbies-grid">
+    <div class="hobby-card reveal">
+      <div class="hobby-emoji">🖊️</div>
+      <h3>Poetry</h3>
+      <p>Words are my canvas. I find beauty in expressing complex emotions through the rhythm and imagery of poetry — a creative escape from scientific formulas.</p>
+    </div>
+    <div class="hobby-card reveal reveal-delay-1">
+      <div class="hobby-emoji">✍️</div>
+      <h3>Writing & Blogging</h3>
+      <p>From research narratives to reflective essays, I love turning thoughts into compelling stories. Writing bridges the gap between science and everyday life.</p>
+    </div>
+    <div class="hobby-card reveal reveal-delay-2">
+      <div class="hobby-emoji">🌍</div>
+      <h3>Traveling</h3>
+      <p>Having visited multiple countries — from Bangladesh to France to the USA — every journey adds a new perspective and chapter to my understanding of the world.</p>
+    </div>
+    <div class="hobby-card reveal">
+      <div class="hobby-emoji">🏏</div>
+      <h3>Cricket</h3>
+      <p>Former organizer of Jahangirnagar University Cricket Club. The sport taught me teamwork, strategy, and the joy of fair competition.</p>
+    </div>
+    <div class="hobby-card reveal reveal-delay-1">
+      <div class="hobby-emoji">📖</div>
+      <h3>Reading</h3>
+      <p>Always deep in something thought-provoking — from scientific papers to literature and philosophy. A curious mind never stops learning.</p>
+    </div>
+    <div class="hobby-card reveal reveal-delay-2">
+      <div class="hobby-emoji">☕</div>
+      <h3>Coffee & Conversations</h3>
+      <p>Some of my best ideas emerge over a cup of coffee and a deep conversation with curious minds from different walks of life.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG / WRITING -->
+<section id="blog">
+  <div class="section-tag" style="color: var(--pink);">
+    <span class="tag-dot" style="background: var(--pink);"></span> My Writing
+  </div>
+  <h2 class="section-title reveal">Poetry & <span style="color:var(--pink);">Reflections</span></h2>
+  <p class="section-subtitle reveal">Words that flow from the heart — poetry, essays, and reflections on science, life, and everything in between.</p>
+  <div class="blog-grid">
+    <div class="blog-card reveal">
+      <div class="blog-cover">
+        <div class="blog-cover-gradient"></div>
+        <span class="blog-cover-label">Poetry</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-date">Your Date Here</div>
+        <h3>Your First Poem or Writing Title</h3>
+        <p>Share a preview of your poem or writing piece here. Let readers glimpse the emotion and imagery before they dive in...</p>
+        <a href="#" class="blog-read-more">Read More →</a>
+      </div>
+    </div>
+    <div class="blog-card reveal reveal-delay-1">
+      <div class="blog-cover">
+        <div class="blog-cover-gradient"></div>
+        <span class="blog-cover-label">Reflection</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-date">Your Date Here</div>
+        <h3>A Reflection on the Research Journey</h3>
+        <p>Write about your experiences — the late nights in the lab, the moments of discovery, the lessons learned along the way...</p>
+        <a href="#" class="blog-read-more">Read More →</a>
+      </div>
+    </div>
+    <div class="blog-card reveal reveal-delay-2">
+      <div class="blog-cover">
+        <div class="blog-cover-gradient"></div>
+        <span class="blog-cover-label">Creative Writing</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-date">Your Date Here</div>
+        <h3>Another Piece of Your Writing</h3>
+        <p>This space is yours — fill it with essays, prose, or any creative writing that expresses who you are beyond the lab coat...</p>
+        <a href="#" class="blog-read-more">Read More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag" style="color: var(--blue); justify-content: center;">
+    <span class="tag-dot" style="background: var(--blue);"></span> Get In Touch
+  </div>
+  <div class="contact-box reveal">
+    <h2 class="contact-heading">Let's <span style="color: var(--coral);">Connect</span></h2>
+    <p class="contact-desc">Whether you want to collaborate on research, discuss sustainability, or explore academic opportunities — I'd love to hear from you.</p>
+    <div class="contact-grid">
+      <a href="mailto:isla8207@vandals.uidaho.edu" class="contact-item">
+        <span class="contact-icon">✉️</span>
+        <div class="contact-info">
+          <div class="contact-info-label">Email</div>
+          <div class="contact-info-value">isla8207@vandals.uidaho.edu</div>
+        </div>
+      </a>
+      <a href="tel:+12089977312" class="contact-item">
+        <span class="contact-icon">📞</span>
+        <div class="contact-info">
+          <div class="contact-info-label">Phone</div>
+          <div class="contact-info-value">+1 (208) 997-7312</div>
+        </div>
+      </a>
+      <a href="#" class="contact-item">
+        <span class="contact-icon">🏛️</span>
+        <div class="contact-info">
+          <div class="contact-info-label">University</div>
+          <div class="contact-info-value">University of Idaho</div>
+        </div>
+      </a>
+      <a href="#" class="contact-item">
+        <span class="contact-icon">📍</span>
+        <div class="contact-info">
+          <div class="contact-info-label">Location</div>
+          <div class="contact-info-value">Idaho Falls, ID, USA</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Md Mahfujul Islam · Built with <span class="footer-heart">♥</span> and curiosity</p>
+</footer>
+
+<script>
+  // Scroll reveal animations
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Animated skill bars
+  const skillBars = document.querySelectorAll('.skill-bar-fill');
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.width = entry.target.dataset.width;
+        skillObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  skillBars.forEach(bar => skillObserver.observe(bar));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('navLinks').classList.remove('open');
+      }
+    });
+  });
+
+  // Navbar background on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 80) {
+      nav.style.background = 'rgba(13, 13, 18, 0.95)';
+    } else {
+      nav.style.background = 'rgba(13, 13, 18, 0.7)';
+    }
+  });
+</script>
+
+</body>
+</html>
