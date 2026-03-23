@@ -1,0 +1,3266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md Mahfujul Islam — Researcher, Educator, Scientist</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=IBM+Plex+Mono:wght@300;400;500&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0d0d12;
+    --bg-card: #16161e;
+    --bg-elevated: #1e1e2a;
+    --text: #eee8e0;
+    --text-dim: #8a8494;
+    --coral: #ff6b5a;
+    --coral-glow: rgba(255, 107, 90, 0.15);
+    --teal: #3dd6c8;
+    --teal-glow: rgba(61, 214, 200, 0.12);
+    --gold: #f0c850;
+    --gold-glow: rgba(240, 200, 80, 0.12);
+    --violet: #a78bfa;
+    --violet-glow: rgba(167, 139, 250, 0.12);
+    --pink: #f472b6;
+    --blue: #60a5fa;
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* === ANIMATED GRADIENT BACKGROUND === */
+  .gradient-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 20%, rgba(255,107,90,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 60% at 80% 80%, rgba(61,214,200,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 40% at 50% 50%, rgba(167,139,250,0.05) 0%, transparent 50%);
+    animation: gradientShift 15s ease-in-out infinite alternate;
+  }
+
+  @keyframes gradientShift {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+  }
+
+  /* === NAVIGATION === */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(13, 13, 18, 0.7);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--coral), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-links { display: flex; gap: 0.3rem; }
+
+  .nav-links a {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    transition: all 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: var(--text);
+    background: rgba(255,255,255,0.06);
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  /* === HERO === */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    text-align: center;
+  }
+
+  .hero-content { max-width: 800px; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.2rem;
+    background: var(--coral-glow);
+    border: 1px solid rgba(255,107,90,0.2);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--coral);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: popIn 0.6s ease 0.2s forwards;
+  }
+
+  .hero-badge .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--coral);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .hero-name {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: slideUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero-name .gradient-text {
+    background: linear-gradient(135deg, var(--coral) 0%, var(--gold) 40%, var(--teal) 70%, var(--violet) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: shimmer 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 100% center; }
+  }
+
+  .hero-desc {
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    opacity: 0;
+    animation: slideUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: slideUp 0.8s ease 0.8s forwards;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 2rem;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.35s ease;
+  }
+
+  .btn-glow {
+    background: linear-gradient(135deg, var(--coral), #ff8a5c);
+    color: #fff;
+    box-shadow: 0 4px 25px rgba(255,107,90,0.3);
+  }
+
+  .btn-glow:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 35px rgba(255,107,90,0.45);
+  }
+
+  .btn-ghost {
+    background: rgba(255,255,255,0.05);
+    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .btn-ghost:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Floating shapes in hero */
+  .hero-shapes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: floatShape 12s ease-in-out infinite;
+  }
+
+  .shape-1 {
+    width: 300px; height: 300px;
+    top: 10%; left: -5%;
+    background: radial-gradient(circle, rgba(255,107,90,0.12), transparent 70%);
+    animation-delay: 0s;
+  }
+
+  .shape-2 {
+    width: 200px; height: 200px;
+    top: 60%; right: 5%;
+    background: radial-gradient(circle, rgba(61,214,200,0.12), transparent 70%);
+    animation-delay: -4s;
+  }
+
+  .shape-3 {
+    width: 250px; height: 250px;
+    bottom: 10%; left: 30%;
+    background: radial-gradient(circle, rgba(167,139,250,0.1), transparent 70%);
+    animation-delay: -8s;
+  }
+
+  @keyframes floatShape {
+    0%, 100% { transform: translateY(0) scale(1); }
+    33% { transform: translateY(-25px) scale(1.05); }
+    66% { transform: translateY(15px) scale(0.95); }
+  }
+
+  /* === SECTION STYLES === */
+  section { padding: 6rem 3rem; position: relative; }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-tag .tag-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    max-width: 550px;
+    margin-bottom: 3.5rem;
+  }
+
+  /* === ABOUT / BIO === */
+  #about {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-photo-area {
+    position: relative;
+  }
+
+  .photo-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s;
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, var(--coral), var(--teal), var(--violet));
+    z-index: -1;
+    opacity: 0.4;
+  }
+
+  .photo-frame .placeholder-icon { font-size: 3rem; opacity: 0.3; }
+
+  .photo-frame .placeholder-text {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .about-info { padding-top: 0.5rem; }
+
+  .about-text {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+  }
+
+  .about-text strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .quick-facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+
+  .fact-card {
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.3s;
+  }
+
+  .fact-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .fact-icon { font-size: 1.5rem; margin-bottom: 0.6rem; }
+
+  .fact-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 0.3rem;
+  }
+
+  .fact-value {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  /* === EDUCATION === */
+  #education { max-width: 1200px; margin: 0 auto; }
+
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--coral), var(--teal), var(--violet));
+    border-radius: 2px;
+  }
+
+  .timeline-item {
+    position: relative;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.3s;
+  }
+
+  .timeline-item:hover {
+    transform: translateX(6px);
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.35rem;
+    top: 2.5rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--coral);
+    background: var(--bg);
+  }
+
+  .timeline-item:nth-child(2)::before { border-color: var(--teal); }
+  .timeline-item:nth-child(3)::before { border-color: var(--violet); }
+
+  .timeline-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--coral);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-item:nth-child(2) .timeline-date { color: var(--teal); }
+  .timeline-item:nth-child(3) .timeline-date { color: var(--violet); }
+
+  .timeline-item h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-item .timeline-school {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-item .timeline-details {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  /* === EXPERIENCE === */
+  #experience { max-width: 1200px; margin: 0 auto; }
+
+  .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .exp-card {
+    padding: 2rem;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+
+  .exp-card:nth-child(1)::before { background: linear-gradient(90deg, var(--coral), var(--gold)); }
+  .exp-card:nth-child(2)::before { background: linear-gradient(90deg, var(--teal), var(--blue)); }
+  .exp-card:nth-child(3)::before { background: linear-gradient(90deg, var(--violet), var(--pink)); }
+  .exp-card:nth-child(4)::before { background: linear-gradient(90deg, var(--gold), var(--coral)); }
+  .exp-card:nth-child(5)::before { background: linear-gradient(90deg, var(--blue), var(--teal)); }
+  .exp-card:nth-child(6)::before { background: linear-gradient(90deg, var(--pink), var(--violet)); }
+
+  .exp-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255,255,255,0.08);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  }
+
+  .exp-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+  }
+
+  .exp-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .exp-org {
+    font-size: 0.88rem;
+    color: var(--coral);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+  }
+
+  .exp-card p {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  /* === PHOTO GALLERY === */
+  #gallery { max-width: 1200px; margin: 0 auto; }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .gallery-item {
+    aspect-ratio: 4/3;
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.04);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gallery-item:nth-child(1) { grid-row: span 2; aspect-ratio: auto; }
+
+  .gallery-item:hover {
+    transform: scale(1.02);
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  }
+
+  .gallery-item .gallery-placeholder {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+  }
+
+  .gallery-item .gallery-placeholder span { font-size: 2rem; display: block; margin-bottom: 0.5rem; opacity: 0.3; }
+
+  .gallery-item .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+  }
+
+  .gallery-item:hover .overlay { transform: translateY(0); }
+
+  .overlay-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .overlay-desc {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* === SKILLS === */
+  #skills { max-width: 1200px; margin: 0 auto; }
+
+  .skills-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .skill-group {
+    padding: 2rem;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .skill-group-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .skill-group-title .color-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .skill-bar-item { margin-bottom: 1.2rem; }
+  .skill-bar-item:last-child { margin-bottom: 0; }
+
+  .skill-bar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-bar-name {
+    font-size: 0.88rem;
+    font-weight: 500;
+  }
+
+  .skill-bar-pct {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+  }
+
+  .skill-bar-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    border-radius: 100px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .skill-bar-fill.coral { background: linear-gradient(90deg, var(--coral), var(--gold)); }
+  .skill-bar-fill.teal { background: linear-gradient(90deg, var(--teal), var(--blue)); }
+  .skill-bar-fill.violet { background: linear-gradient(90deg, var(--violet), var(--pink)); }
+  .skill-bar-fill.gold { background: linear-gradient(90deg, var(--gold), var(--coral)); }
+
+  /* === PUBLICATIONS === */
+  #publications { max-width: 1200px; margin: 0 auto; }
+
+  .pub-list { list-style: none; }
+
+  .pub-item {
+    padding: 1.8rem 2rem;
+    margin-bottom: 1rem;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-left: 3px solid var(--coral);
+    transition: all 0.3s;
+  }
+
+  .pub-item:nth-child(2) { border-left-color: var(--teal); }
+  .pub-item:nth-child(3) { border-left-color: var(--violet); }
+  .pub-item:nth-child(4) { border-left-color: var(--gold); }
+  .pub-item:nth-child(5) { border-left-color: var(--pink); }
+
+  .pub-item:hover {
+    transform: translateX(6px);
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .pub-item h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+  }
+
+  .pub-item .pub-journal {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--text-dim);
+  }
+
+  /* === CERTIFICATIONS === */
+  #certifications { max-width: 1200px; margin: 0 auto; }
+
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .cert-card {
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s;
+  }
+
+  .cert-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  }
+
+  .cert-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+  }
+
+  .cert-card h4 {
+    font-size: 0.88rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .cert-card .cert-source {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* === HOBBIES === */
+  #hobbies { max-width: 1200px; margin: 0 auto; }
+
+  .hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .hobby-card {
+    padding: 2.5rem 2rem;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hobby-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: var(--radius) var(--radius) 0 0;
+    transition: height 0.4s;
+  }
+
+  .hobby-card:hover::before { height: 5px; }
+
+  .hobby-card:nth-child(1)::before { background: linear-gradient(90deg, var(--coral), var(--gold)); }
+  .hobby-card:nth-child(2)::before { background: linear-gradient(90deg, var(--teal), var(--blue)); }
+  .hobby-card:nth-child(3)::before { background: linear-gradient(90deg, var(--violet), var(--pink)); }
+  .hobby-card:nth-child(4)::before { background: linear-gradient(90deg, var(--gold), var(--coral)); }
+  .hobby-card:nth-child(5)::before { background: linear-gradient(90deg, var(--blue), var(--teal)); }
+  .hobby-card:nth-child(6)::before { background: linear-gradient(90deg, var(--pink), var(--violet)); }
+
+  .hobby-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255,255,255,0.08);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  }
+
+  .hobby-emoji { font-size: 2.5rem; margin-bottom: 1rem; }
+
+  .hobby-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+
+  .hobby-card p {
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* === BLOG / WRITING === */
+  #blog { max-width: 1200px; margin: 0 auto; }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .blog-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.04);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  }
+
+  .blog-cover {
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .blog-cover-gradient {
+    width: 100%;
+    height: 100%;
+  }
+
+  .blog-card:nth-child(1) .blog-cover-gradient { background: linear-gradient(135deg, #1a1a2e, var(--coral), var(--gold)); }
+  .blog-card:nth-child(2) .blog-cover-gradient { background: linear-gradient(135deg, #1a1a2e, var(--teal), var(--blue)); }
+  .blog-card:nth-child(3) .blog-cover-gradient { background: linear-gradient(135deg, #1a1a2e, var(--violet), var(--pink)); }
+
+  .blog-cover-label {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    color: var(--text);
+  }
+
+  .blog-body { padding: 1.8rem; }
+
+  .blog-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    margin-bottom: 0.6rem;
+  }
+
+  .blog-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    line-height: 1.35;
+  }
+
+  .blog-card p {
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+  }
+
+  .blog-read-more {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--coral);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: gap 0.3s;
+  }
+
+  .blog-card:hover .blog-read-more { gap: 0.6rem; }
+
+  /* === CONTACT === */
+  #contact {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-box {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 4rem;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--coral), var(--gold), var(--teal), var(--violet));
+  }
+
+  .contact-heading {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 0.8rem;
+  }
+
+  .contact-desc {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.2rem;
+    background: rgba(255,255,255,0.03);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255,255,255,0.04);
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.3s;
+  }
+
+  .contact-item:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+  }
+
+  .contact-icon { font-size: 1.3rem; }
+
+  .contact-info { text-align: left; }
+
+  .contact-info-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .contact-info-value {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  /* === FOOTER === */
+  footer {
+    text-align: center;
+    padding: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  footer p {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+  }
+
+  footer .footer-heart { color: var(--coral); }
+
+  /* === SCROLL ANIMATIONS === */
+  .reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Fallback: if JS doesn't run, show everything after 2s */
+  @keyframes revealFallback {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    animation: revealFallback 0s 2s forwards;
+  }
+  .reveal.visible {
+    animation: none;
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 900px) {
+    nav { padding: 0.8rem 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(13,13,18,0.95);
+      backdrop-filter: blur(20px);
+      padding: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-photo-area { max-width: 250px; margin: 0 auto; }
+    .quick-facts { grid-template-columns: 1fr; }
+    .skills-container { grid-template-columns: 1fr; }
+    .experience-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-box { padding: 2.5rem 1.5rem; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item:nth-child(1) { grid-row: span 1; }
+    .cert-grid { grid-template-columns: 1fr; }
+    .blog-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 500px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .hobbies-grid { grid-template-columns: 1fr; }
+  }
+  /* === WORLD CLOCK === */
+  #worldclock { max-width: 1200px; margin: 0 auto; }
+  .wc-search-wrap { position: relative; margin-bottom: 2.5rem; }
+  .wc-search-box {
+    display: flex; align-items: center; background: var(--bg-card); border-radius: 100px;
+    padding: 0 1.5rem; border: 1px solid rgba(255,255,255,0.06); transition: all 0.3s;
+  }
+  .wc-search-box.active { border-color: var(--teal); box-shadow: 0 0 25px rgba(61,214,200,0.12); }
+  .wc-search-box input {
+    flex: 1; border: none; outline: none; padding: 1.1rem 1rem; font-size: 0.95rem;
+    font-family: 'Outfit', sans-serif; font-weight: 400; color: var(--text); background: transparent;
+  }
+  .wc-search-box input::placeholder { color: var(--text-dim); }
+  .wc-clear { background: none; border: none; cursor: pointer; color: var(--text-dim); font-size: 1.3rem; padding: 4px; display: none; }
+  .wc-dropdown {
+    position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: var(--bg-elevated);
+    border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4); max-height: 320px; overflow-y: auto;
+    z-index: 100; padding: 0.5rem 0; display: none;
+  }
+  .wc-dropdown.visible { display: block; }
+  .wc-dropdown-item {
+    display: flex; align-items: center; justify-content: space-between; width: 100%;
+    padding: 0.85rem 1.5rem; border: none; background: transparent; cursor: pointer;
+    text-align: left; font-family: 'Outfit', sans-serif; transition: background 0.12s;
+  }
+  .wc-dropdown-item:hover { background: rgba(255,255,255,0.04); }
+  .wc-dropdown-item .wc-left { display: flex; align-items: center; gap: 0.75rem; }
+  .wc-dropdown-item .wc-city { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+  .wc-dropdown-item .wc-country { font-size: 0.75rem; color: var(--text-dim); }
+  .wc-dropdown-item .wc-preview {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; font-weight: 500; color: var(--teal);
+  }
+  .wc-no-results { padding: 1.5rem; color: var(--text-dim); font-size: 0.85rem; text-align: center; }
+  .wc-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem;
+  }
+  .wc-card {
+    border-radius: var(--radius); padding: 1.8rem 1.6rem 1.4rem; position: relative; overflow: hidden;
+    min-height: 180px; display: flex; flex-direction: column; justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: default;
+  }
+  .wc-card:hover { transform: translateY(-4px); }
+  .wc-card .wc-remove {
+    position: absolute; top: 10px; right: 10px; border: none; border-radius: 50%;
+    width: 26px; height: 26px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 15px; opacity: 0; transition: opacity 0.2s; background: rgba(0,0,0,0.2); color: #fff;
+  }
+  .wc-card:hover .wc-remove { opacity: 0.7; }
+  .wc-card .wc-remove:hover { opacity: 1; }
+  .wc-card-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem; }
+  .wc-card-emoji { font-size: 1.3rem; }
+  .wc-card-city { font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.1rem; }
+  .wc-card-sub { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.05em; margin-left: 2px; }
+  .wc-card-time { font-family: 'IBM Plex Mono', monospace; font-size: 2.2rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+  .wc-card-date { font-size: 0.72rem; font-weight: 400; margin-top: 0.4rem; }
+  .wc-star { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.45); }
+  .wc-empty { text-align: center; padding: 5rem 0; color: var(--text-dim); }
+  .wc-empty .wc-empty-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .wc-empty .wc-empty-text { font-size: 1rem; font-weight: 500; }
+  @media (max-width: 500px) { .wc-grid { grid-template-columns: 1fr; } .wc-card-time { font-size: 1.8rem; } }
+  /* === QUICK NOTES === */
+  #quicknotes { max-width: 1200px; margin: 0 auto; }
+  .qn-app { display: flex; gap: 1.5rem; min-height: 520px; }
+  .qn-sidebar { width: 280px; flex-shrink: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  .qn-new-btn {
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    width: 100%; padding: 0.8rem; border-radius: 12px; border: none;
+    background: linear-gradient(135deg, var(--teal), #2ab5a8); color: #fff;
+    font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 600;
+    cursor: pointer; box-shadow: 0 4px 18px rgba(61,214,200,0.2);
+    transition: all 0.2s;
+  }
+  .qn-new-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(61,214,200,0.3); }
+  .qn-search {
+    background: var(--bg-card); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px;
+    padding: 0.6rem 0.9rem; color: var(--text); font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem; outline: none; width: 100%; transition: border-color 0.2s;
+  }
+  .qn-search:focus { border-color: var(--teal); }
+  .qn-search::placeholder { color: var(--text-dim); }
+  .qn-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 0.4rem; max-height: 420px; padding-right: 4px; }
+  .qn-list::-webkit-scrollbar { width: 4px; }
+  .qn-list::-webkit-scrollbar-thumb { background: var(--bg-elevated); border-radius: 2px; }
+  .qn-item {
+    padding: 0.75rem 0.9rem; background: var(--bg-card); border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 10px; cursor: pointer; transition: all 0.15s; position: relative;
+  }
+  .qn-item:hover { border-color: rgba(255,255,255,0.1); background: var(--bg-elevated); }
+  .qn-item.active { border-color: var(--teal); background: rgba(61,214,200,0.04); border-left: 3px solid var(--teal); }
+  .qn-item-title { font-weight: 600; font-size: 0.85rem; margin-bottom: 0.2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .qn-item-preview { font-size: 0.7rem; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .qn-item-meta { font-size: 0.6rem; color: rgba(255,255,255,0.2); font-family: 'IBM Plex Mono', monospace; margin-top: 0.3rem; }
+  .qn-item-del {
+    position: absolute; top: 8px; right: 8px; background: none; border: none;
+    color: rgba(255,255,255,0.15); font-size: 0.75rem; cursor: pointer; transition: color 0.12s;
+  }
+  .qn-item:hover .qn-item-del { color: var(--text-dim); }
+  .qn-item-del:hover { color: #ef4444 !important; }
+  .qn-count { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; color: var(--text-dim); text-align: center; padding: 0.3rem; }
+
+  .qn-editor { flex: 1; background: var(--bg-card); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
+  .qn-ed-top { padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .qn-title-input {
+    width: 100%; background: none; border: none; outline: none;
+    font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 700;
+    color: var(--text); padding: 0;
+  }
+  .qn-title-input::placeholder { color: var(--text-dim); }
+  .qn-toolbar {
+    display: flex; align-items: center; gap: 0.2rem; padding: 0.4rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05); flex-wrap: wrap; background: rgba(255,255,255,0.01);
+  }
+  .qn-tb {
+    background: none; border: 1px solid transparent; border-radius: 5px;
+    width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--text-dim); font-size: 0.8rem; transition: all 0.1s;
+  }
+  .qn-tb:hover { background: var(--bg-elevated); color: var(--text); border-color: rgba(255,255,255,0.06); }
+  .qn-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.06); margin: 0 0.2rem; }
+  .qn-tc {
+    width: 18px; height: 18px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.08);
+    cursor: pointer; transition: all 0.1s;
+  }
+  .qn-tc:hover { border-color: #fff; transform: scale(1.2); }
+  .qn-tlabel { font-size: 0.55rem; color: var(--text-dim); font-family: 'IBM Plex Mono', monospace; margin: 0 0.25rem; }
+  .qn-body-wrap { flex: 1; overflow-y: auto; padding: 1rem 1.2rem 2rem; }
+  .qn-body {
+    min-height: 200px; outline: none; font-size: 0.92rem; line-height: 1.85;
+    color: var(--text); font-weight: 300;
+  }
+  .qn-body:empty:before { content: attr(data-placeholder); color: var(--text-dim); pointer-events: none; font-style: italic; }
+  .qn-empty-editor {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: var(--text-dim); gap: 0.6rem; text-align: center;
+  }
+  .qn-empty-editor .qn-ee-icon { font-size: 2.5rem; opacity: 0.3; }
+  .qn-empty-editor .qn-ee-text { font-size: 0.9rem; font-weight: 500; }
+  .qn-status { padding: 0.4rem 1rem; border-top: 1px solid rgba(255,255,255,0.04); font-size: 0.6rem; color: var(--text-dim); font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; }
+
+  @media (max-width: 900px) {
+    .qn-app { flex-direction: column; }
+    .qn-sidebar { width: 100%; }
+    .qn-list { max-height: 200px; flex-direction: row; overflow-x: auto; overflow-y: hidden; }
+    .qn-item { min-width: 200px; flex-shrink: 0; }
+    .qn-editor { min-height: 400px; }
+  }
+  /* === BANGLA TRANSLATOR === */
+  #translator { max-width: 1200px; margin: 0 auto; }
+  .tr-container { display: flex; gap: 1.2rem; }
+  .tr-panel {
+    flex: 1; background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 16px; display: flex; flex-direction: column; overflow: hidden; min-height: 380px;
+  }
+  .tr-panel-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.75rem 1.1rem; border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .tr-panel-label {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim);
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .tr-panel-label .tr-dot { width: 7px; height: 7px; border-radius: 50%; }
+  .tr-head-actions { display: flex; gap: 0.3rem; }
+  .tr-head-btn {
+    background: var(--bg-elevated); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px; padding: 0.35rem 0.65rem; font-size: 0.65rem; font-weight: 600;
+    color: var(--text-dim); cursor: pointer; font-family: 'Outfit', sans-serif; transition: all 0.12s;
+  }
+  .tr-head-btn:hover { border-color: var(--violet); color: var(--violet); }
+  .tr-textarea {
+    flex: 1; background: none; border: none; outline: none; resize: none;
+    padding: 1rem 1.2rem; font-family: 'Outfit', sans-serif; font-size: 0.92rem;
+    line-height: 1.8; color: var(--text); width: 100%;
+  }
+  .tr-textarea::placeholder { color: var(--text-dim); }
+  .tr-output {
+    flex: 1; padding: 1rem 1.2rem; font-size: 0.95rem; line-height: 2;
+    color: var(--text); overflow-y: auto; font-weight: 400;
+  }
+  .tr-output.bangla-text { font-family: 'Hind Siliguri', 'Outfit', sans-serif; }
+  .tr-output .tr-placeholder { color: var(--text-dim); font-style: italic; font-family: 'Outfit', sans-serif; font-size: 0.85rem; }
+  .tr-panel-foot {
+    padding: 0.5rem 1.1rem; border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; color: var(--text-dim);
+  }
+  .tr-actions { display: flex; gap: 0.6rem; align-items: center; margin-top: 1rem; }
+  .tr-translate-btn {
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 0.85rem 2.5rem; border-radius: 100px; border: none;
+    background: linear-gradient(135deg, var(--violet), #8b5cf6);
+    color: #fff; font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 700;
+    cursor: pointer; box-shadow: 0 4px 20px rgba(167,139,250,0.25);
+    transition: all 0.2s; margin: 0 auto;
+  }
+  .tr-translate-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(167,139,250,0.35); }
+  .tr-translate-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+  .tr-translate-btn .tr-spinner {
+    width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff; border-radius: 50%; display: none;
+    animation: trSpin 0.7s linear infinite;
+  }
+  @keyframes trSpin { to { transform: rotate(360deg); } }
+  .tr-translate-btn.loading .tr-spinner { display: inline-block; }
+  .tr-translate-btn.loading .tr-btn-text { display: none; }
+  .tr-options {
+    display: flex; gap: 0.8rem; align-items: center; justify-content: center;
+    margin-top: 0.8rem; flex-wrap: wrap;
+  }
+  .tr-opt {
+    display: flex; align-items: center; gap: 0.35rem; font-size: 0.72rem;
+    color: var(--text-dim); cursor: pointer; padding: 0.35rem 0.7rem;
+    border: 1px solid rgba(255,255,255,0.06); border-radius: 100px; transition: all 0.12s;
+    background: none; font-family: 'Outfit', sans-serif;
+  }
+  .tr-opt:hover { border-color: var(--violet); color: var(--violet); }
+  .tr-opt.active { border-color: var(--violet); color: var(--violet); background: rgba(167,139,250,0.08); }
+  .tr-history { margin-top: 2rem; }
+  .tr-hist-title { font-size: 0.85rem; font-weight: 600; margin-bottom: 0.8rem; color: var(--text-dim); display: flex; align-items: center; gap: 0.4rem; }
+  .tr-hist-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.7rem; }
+  .tr-hist-card {
+    background: var(--bg-card); border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 12px; padding: 0.9rem; cursor: pointer; transition: all 0.15s; position: relative;
+  }
+  .tr-hist-card:hover { border-color: rgba(255,255,255,0.1); }
+  .tr-hist-src { font-size: 0.72rem; color: var(--text-dim); margin-bottom: 0.3rem;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .tr-hist-out { font-size: 0.78rem; color: var(--text); font-weight: 500;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .tr-hist-meta { font-size: 0.58rem; color: rgba(255,255,255,0.2); font-family: 'IBM Plex Mono', monospace; margin-top: 0.4rem; }
+  .tr-hist-del { position: absolute; top: 6px; right: 8px; background: none; border: none; color: rgba(255,255,255,0.12); font-size: 0.7rem; cursor: pointer; }
+  .tr-hist-card:hover .tr-hist-del { color: var(--text-dim); }
+  .tr-hist-del:hover { color: #ef4444 !important; }
+
+  @media (max-width: 900px) {
+    .tr-container { flex-direction: column; }
+    .tr-panel { min-height: 250px; }
+  }
+
+
+  /* === BIOPATHWAY EXPLORER (Step-by-Step Wizard) === */
+  #biopathway { max-width: 1200px; margin: 0 auto; }
+  .bpe-app {
+    background: linear-gradient(180deg, #0e1428 0%, #111b35 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(121,168,255,0.2);
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+  }
+  .bpe-header {
+    background: rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(121,168,255,0.15);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .bpe-logo { display: flex; align-items: center; gap: 12px; }
+  .bpe-logo-icon { width: 38px; height: 38px; border-radius: 12px; background: linear-gradient(135deg, #79a8ff, #87f0d1); display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 4px 15px rgba(121,168,255,0.3); }
+  .bpe-logo h3 { margin: 0; font-size: 16px; font-weight: 800; color: #eef3ff; }
+  .bpe-logo p { margin: 0; font-size: 9px; color: #79a8ff; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+  .bpe-restart { background: rgba(121,168,255,0.1); border: 1px solid rgba(121,168,255,0.3); border-radius: 10px; padding: 7px 16px; color: #9fb0dd; font-size: 11px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: all 0.2s; }
+  .bpe-restart:hover { background: rgba(121,168,255,0.2); color: #eef3ff; }
+
+  /* Step indicator */
+  .bpe-steps {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 24px;
+    border-bottom: 1px solid rgba(121,168,255,0.08);
+    flex-wrap: wrap;
+    background: rgba(0,0,0,0.15);
+  }
+  .bpe-step-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .bpe-step-pill.done { background: rgba(135,240,209,0.08); color: #87f0d1; border-color: rgba(135,240,209,0.2); }
+  .bpe-step-pill.active { background: linear-gradient(135deg, rgba(135,240,209,0.18), rgba(121,168,255,0.12)); color: #e0fff0; border-color: rgba(135,240,209,0.5); box-shadow: 0 0 15px rgba(135,240,209,0.1); }
+  .bpe-step-pill.pending { background: rgba(255,255,255,0.02); color: #4a5568; }
+  .bpe-step-arrow { color: #334155; font-size: 11px; }
+  .bpe-step-arrow.done { color: rgba(135,240,209,0.5); }
+
+  /* Main content area */
+  .bpe-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    max-height: 550px;
+    color: #d0daf0;
+    scroll-behavior: smooth;
+  }
+  .bpe-content::-webkit-scrollbar { width: 6px; }
+  .bpe-content::-webkit-scrollbar-thumb { background: rgba(121,168,255,0.2); border-radius: 3px; }
+  .bpe-content h2 { margin: 0 0 6px; font-size: 24px; font-weight: 800; color: #eef3ff; font-family: 'Fraunces', serif; }
+  .bpe-content > .bpe-desc { color: #8a94b8; margin: 0 0 22px; line-height: 1.7; font-size: 13.5px; }
+
+  /* Selection cards */
+  .bpe-options { display: grid; gap: 12px; }
+  .bpe-option {
+    padding: 18px 20px;
+    border-radius: 16px;
+    border: 2px solid rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.02);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+  }
+  .bpe-option:hover { border-color: rgba(121,168,255,0.25); background: rgba(121,168,255,0.04); }
+  .bpe-option.selected { border-color: #87f0d1; background: linear-gradient(135deg, rgba(135,240,209,0.08), rgba(121,168,255,0.05)); }
+  .bpe-option .bpe-opt-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .bpe-option .bpe-opt-emoji { font-size: 24px; }
+  .bpe-option .bpe-opt-name { font-size: 15px; font-weight: 700; color: #eef3ff; }
+  .bpe-option .bpe-opt-desc { color: #8a94b8; font-size: 12.5px; line-height: 1.6; margin: 0; }
+
+  /* Composition mini bars */
+  .bpe-comp-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+  .bpe-comp-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: #64748b; }
+  .bpe-comp-bar { width: 28px; height: 5px; border-radius: 99px; background: rgba(255,255,255,0.05); overflow: hidden; }
+  .bpe-comp-fill { height: 100%; border-radius: 99px; }
+
+  /* Pill selectors for pretreatment/conversion */
+  .bpe-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .bpe-pill {
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 2px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.02);
+    color: #8a94b8;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    transition: all 0.25s ease;
+  }
+  .bpe-pill:hover { border-color: rgba(121,168,255,0.3); color: #c0ccf0; }
+  .bpe-pill.active { border-color: #87f0d1; color: #e0fff0; background: linear-gradient(135deg, rgba(135,240,209,0.12), rgba(121,168,255,0.08)); box-shadow: 0 0 15px rgba(135,240,209,0.08); transform: scale(1.03); }
+
+  /* Detail expander */
+  .bpe-expander { border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; background: rgba(255,255,255,0.015); overflow: hidden; margin-bottom: 10px; }
+  .bpe-expander-head {
+    width: 100%;
+    padding: 13px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    color: #c8d4ee;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+  }
+  .bpe-expander-head:hover { color: #eef3ff; }
+  .bpe-expander-arrow { font-size: 10px; transition: transform 0.3s; }
+  .bpe-expander-arrow.open { transform: rotate(180deg); }
+  .bpe-expander-body { padding: 4px 16px 16px; color: #8a94b8; line-height: 1.7; font-size: 12.5px; display: none; }
+  .bpe-expander-body.open { display: block; }
+  .bpe-expander-body strong { color: #c8d4ee; }
+
+  /* Info highlight card */
+  .bpe-info-card {
+    padding: 18px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(135,240,209,0.15);
+    background: rgba(135,240,209,0.04);
+    margin-bottom: 14px;
+  }
+  .bpe-info-card.blue { border-color: rgba(121,168,255,0.2); background: rgba(121,168,255,0.04); }
+  .bpe-info-card.orange { border-color: rgba(249,115,22,0.2); background: rgba(249,115,22,0.04); }
+  .bpe-info-card h3 { margin: 0 0 8px; font-size: 15px; font-weight: 700; color: #eef3ff; }
+  .bpe-info-card p { margin: 0; color: #8a94b8; font-size: 12.5px; line-height: 1.7; }
+
+  /* Pros/cons grid */
+  .bpe-proscons { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .bpe-proscons p { margin: 5px 0; font-size: 12px; }
+
+  /* Results pathway chain */
+  .bpe-chain {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    padding: 18px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(135,240,209,0.06), rgba(121,168,255,0.04), rgba(249,115,22,0.03));
+    border: 1px solid rgba(135,240,209,0.15);
+    margin-bottom: 18px;
+    font-size: 13px;
+  }
+  .bpe-chain-item {
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 12px;
+  }
+  .bpe-chain-arrow { color: #87f0d1; font-size: 12px; }
+
+  /* Yield metrics grid */
+  .bpe-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 18px; }
+  .bpe-metric-card { padding: 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); }
+  .bpe-metric-label { color: #64748b; font-size: 11px; margin-bottom: 4px; }
+  .bpe-metric-value { font-size: 18px; font-weight: 800; }
+
+  /* Progress bars */
+  .bpe-bar-wrap { margin-bottom: 10px; }
+  .bpe-bar-head { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px; }
+  .bpe-bar-track { height: 7px; border-radius: 99px; background: rgba(255,255,255,0.04); overflow: hidden; }
+  .bpe-bar-fill { height: 100%; border-radius: 99px; transition: width 0.6s ease; }
+
+  /* Product card in results */
+  .bpe-product-list { display: grid; gap: 10px; }
+  .bpe-product-item { padding: 14px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); }
+  .bpe-product-item.highlight { background: rgba(135,240,209,0.05); border-color: rgba(135,240,209,0.15); }
+  .bpe-product-item strong { display: block; margin-bottom: 4px; font-size: 13px; color: #eef3ff; }
+  .bpe-product-item span { color: #8a94b8; font-size: 12px; line-height: 1.6; }
+
+  /* Mass input */
+  .bpe-mass-input {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    color: #eef3ff;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .bpe-mass-input:focus { border-color: #79a8ff; box-shadow: 0 0 15px rgba(121,168,255,0.1); }
+
+  /* Navigation footer */
+  .bpe-footer {
+    padding: 14px 24px;
+    border-top: 1px solid rgba(121,168,255,0.08);
+    background: rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .bpe-btn {
+    padding: 10px 22px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.03);
+    color: #8a94b8;
+  }
+  .bpe-btn:hover { color: #c0ccf0; border-color: rgba(255,255,255,0.12); }
+  .bpe-btn:disabled { opacity: 0.3; cursor: default; }
+  .bpe-btn.primary {
+    border-color: rgba(135,240,209,0.4);
+    background: linear-gradient(135deg, rgba(135,240,209,0.18), rgba(121,168,255,0.12));
+    color: #e0fff0;
+    box-shadow: 0 0 15px rgba(135,240,209,0.08);
+  }
+  .bpe-btn.primary:hover { transform: translateY(-1px); }
+  .bpe-btn.primary:disabled { box-shadow: none; transform: none; }
+  .bpe-step-count { color: #4a5568; font-size: 12px; }
+
+  @media (max-width: 700px) {
+    .bpe-content { padding: 16px; max-height: none; }
+    .bpe-proscons { grid-template-columns: 1fr; }
+    .bpe-metrics { grid-template-columns: 1fr 1fr; }
+    .bpe-steps { padding: 10px 16px; gap: 4px; }
+    .bpe-step-pill { padding: 4px 10px; font-size: 10px; }
+    .bpe-header { padding: 12px 16px; }
+    .bpe-footer { padding: 12px 16px; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="gradient-bg"></div>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#" class="nav-logo">Mahfujul</a>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#publications">Publications</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#hobbies">Hobbies</a>
+    <a href="#worldclock">World Clock</a>
+    <a href="#blog">Writing</a>
+    <a href="#contact">Contact</a>
+    <a href="#quicknotes" style="color:var(--teal);border:1px solid rgba(61,214,200,0.3);background:rgba(61,214,200,0.06)">📝 Notes</a>
+    <a href="#translator" style="color:var(--violet);border:1px solid rgba(167,139,250,0.3);background:rgba(167,139,250,0.06)">🅱 বাংলা</a>
+    <a href="studynotes.html" style="color:var(--gold);border:1px solid rgba(240,200,80,0.3);background:rgba(240,200,80,0.06)">🌿 EcoNotes</a>
+    <a href="#biopathway" style="color:#79a8ff;border:1px solid rgba(121,168,255,0.3);background:rgba(121,168,255,0.06);font-weight:600">🧬 BioPathway</a>
+  </div>
+  <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span> PhD Researcher · Environmental Science</div>
+    <h1 class="hero-name">Hi, I'm <span class="gradient-text">Mahfujul Islam</span></h1>
+    <p class="hero-desc">Researcher. Educator. Scientific innovator. Developing sustainable waste-to-resource solutions at the intersection of environmental science and bioenergy production.</p>
+    <div class="hero-actions">
+      <a href="#publications" class="btn btn-glow">View Publications →</a>
+      <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag" style="color: var(--coral);">
+    <span class="tag-dot" style="background: var(--coral);"></span> Who I Am
+  </div>
+  <div class="about-grid">
+    <div class="about-photo-area reveal">
+      <div class="photo-frame">
+        <!-- Replace with your photo: <img src="photo.jpg" alt="..." style="width:100%;height:100%;object-fit:cover;border-radius:14px;"> -->
+        <div class="placeholder-icon">👨‍🔬</div>
+        <div class="placeholder-text">Add your photo here</div>
+      </div>
+    </div>
+    <div class="about-info">
+      <h2 class="section-title reveal">Md Mahfujul <span style="color: var(--coral);">Islam</span></h2>
+      <p class="about-text reveal reveal-delay-1">
+        I am a <strong>PhD student in Environmental Science</strong> at the University of Idaho, driven by a passion for waste management sustainability and bioenergy production. My expertise in environmental science, rooted in a core <strong>Physics background</strong>, enables me to develop advanced waste-to-resource solutions.
+      </p>
+      <p class="about-text reveal reveal-delay-2">
+        With research experience spanning <strong>Bangladesh, France, and the USA</strong>, I combine rigorous methodology with creative problem-solving. I'm passionate about developing sustainable practices and technologies that can make a significant impact on humanity while continuing my advancement as a researcher, educator, and scientific innovator.
+      </p>
+      <div class="quick-facts reveal reveal-delay-3">
+        <div class="fact-card">
+          <div class="fact-icon">🎓</div>
+          <div class="fact-label">Role</div>
+          <div class="fact-value">Graduate Research Assistant</div>
+        </div>
+        <div class="fact-card">
+          <div class="fact-icon">📍</div>
+          <div class="fact-label">Based In</div>
+          <div class="fact-value">Idaho Falls, ID, USA</div>
+        </div>
+        <div class="fact-card">
+          <div class="fact-icon">🔬</div>
+          <div class="fact-label">Focus</div>
+          <div class="fact-value">Waste-to-Resource & Bioenergy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-tag" style="color: var(--teal);">
+    <span class="tag-dot" style="background: var(--teal);"></span> Academic Journey
+  </div>
+  <h2 class="section-title reveal">Educational <span style="color:var(--teal);">Background</span></h2>
+  <p class="section-subtitle reveal">A trajectory from physics fundamentals to environmental science research.</p>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-date">JAN 2023 – DEC 2026 (EXPECTED)</div>
+      <h3>Ph.D. in Environmental Science</h3>
+      <div class="timeline-school">University of Idaho, ID, USA</div>
+      <div class="timeline-details">
+        <strong>Supervisor:</strong> Dr. Ming Hsun Cheng<br>
+        <strong>Thesis:</strong> Formulation of Municipal Solid Waste for Lignocellulosic Hydrolysate Production<br>
+        <strong>GPA:</strong> 3.29 / 4.00<br>
+        <strong>Funded by:</strong> Department of Energy (DOE) · <strong>Collaboration:</strong> Idaho National Laboratory (INL)
+      </div>
+    </div>
+    <div class="timeline-item reveal reveal-delay-1">
+      <div class="timeline-date">2011 – 2012</div>
+      <h3>Master of Science in Physics</h3>
+      <div class="timeline-school">Jahangirnagar University, Bangladesh</div>
+      <div class="timeline-details">
+        <strong>Supervisor:</strong> Professor Dr. Farid Ahmed<br>
+        <strong>Thesis:</strong> Study and Characterization of Rice Husk Ash with Polyester Resin Composite<br>
+        <strong>GPA:</strong> 3.75 / 4.00
+      </div>
+    </div>
+    <div class="timeline-item reveal reveal-delay-2">
+      <div class="timeline-date">2006 – 2011</div>
+      <h3>Bachelor of Science in Physics</h3>
+      <div class="timeline-school">Jahangirnagar University, Bangladesh</div>
+      <div class="timeline-details">
+        <strong>GPA:</strong> 3.35 / 4.00
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-tag" style="color: var(--gold);">
+    <span class="tag-dot" style="background: var(--gold);"></span> Career Path
+  </div>
+  <h2 class="section-title reveal">Research & Work <span style="color:var(--gold);">Experience</span></h2>
+  <p class="section-subtitle reveal">Over a decade of academic teaching, research, and international scientific collaboration.</p>
+  <div class="experience-grid">
+    <div class="exp-card reveal">
+      <div class="exp-date">AUG 2024 – PRESENT</div>
+      <h3>Graduate Research Assistant</h3>
+      <div class="exp-org">University of Idaho, USA</div>
+      <p>Conducting research on lignocellulosic biomass for sugar yield optimization, analyzing data, and ensuring sustainability practices in waste-to-resource conversion.</p>
+    </div>
+    <div class="exp-card reveal reveal-delay-1">
+      <div class="exp-date">MAY – AUG 2023</div>
+      <h3>Summer Research Project</h3>
+      <div class="exp-org">University of Idaho, USA</div>
+      <p>"Quantitative Phase Imaging of Crowding in Single Bacteria" — under the supervision of Dr. Andreas E. Vasdekis (Associate Professor).</p>
+    </div>
+    <div class="exp-card reveal reveal-delay-2">
+      <div class="exp-date">JAN 2023 – MAY 2024</div>
+      <h3>Graduate Teaching Assistant</h3>
+      <div class="exp-org">University of Idaho, USA</div>
+      <p>Grading, tutoring, and conducting laboratory classes for undergraduate physics courses.</p>
+    </div>
+    <div class="exp-card reveal">
+      <div class="exp-date">MAR – JUN 2013</div>
+      <h3>Research Assistant (Internship)</h3>
+      <div class="exp-org">IMPMC Lab, Paris, France</div>
+      <p>Conducted research on "Metal Insulator Transition in Ba(Co,Ni)S₂" — lab experiments, data analysis, and international collaboration at SOLEIL Synchrotron.</p>
+    </div>
+    <div class="exp-card reveal reveal-delay-1">
+      <div class="exp-date">SEP 2014 – OCT 2021</div>
+      <h3>Lecturer (Physics)</h3>
+      <div class="exp-org">Daffodil International University, Bangladesh</div>
+      <p>Conducting undergraduate physics classes — mechanics, electricity & magnetism, thermodynamics, optics, modern physics. Lab sessions, grading, and exam proctoring.</p>
+    </div>
+    <div class="exp-card reveal reveal-delay-2">
+      <div class="exp-date">OCT 2021 – DEC 2022</div>
+      <h3>Lecturer (Physics)</h3>
+      <div class="exp-org">Universal College Bangladesh</div>
+      <p>Teaching, tutoring, conducting lab sessions, and guiding student project work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-tag" style="color: var(--violet);">
+    <span class="tag-dot" style="background: var(--violet);"></span> What I Can Do
+  </div>
+  <h2 class="section-title reveal">Skills & <span style="color:var(--violet);">Expertise</span></h2>
+  <p class="section-subtitle reveal">A blend of experimental techniques, computational tools, and multilingual communication skills.</p>
+  <div class="skills-container">
+    <div class="skill-group reveal">
+      <div class="skill-group-title">
+        <span class="color-dot" style="background: var(--coral);"></span> Experimental Skills
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Lignocellulosic Biomass Processing</span>
+          <span class="skill-bar-pct">90%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill coral" data-width="90%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Microscopy (STM, AFM, TEM, Kerr)</span>
+          <span class="skill-bar-pct">85%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill coral" data-width="85%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Spectroscopy (PL, UV-IR, Raman, UV-VIS)</span>
+          <span class="skill-bar-pct">88%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill coral" data-width="88%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Composite Material Fabrication</span>
+          <span class="skill-bar-pct">82%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill coral" data-width="82%"></div></div>
+      </div>
+    </div>
+    <div class="skill-group reveal reveal-delay-1">
+      <div class="skill-group-title">
+        <span class="color-dot" style="background: var(--teal);"></span> Computer & Tools
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Python</span>
+          <span class="skill-bar-pct">80%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill teal" data-width="80%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">LaTeX</span>
+          <span class="skill-bar-pct">85%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill teal" data-width="85%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">ORIGIN / MS Excel (Data Analysis)</span>
+          <span class="skill-bar-pct">88%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill teal" data-width="88%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">MS Office & Prezi</span>
+          <span class="skill-bar-pct">90%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill teal" data-width="90%"></div></div>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-title">
+        <span class="color-dot" style="background: var(--violet);"></span> Languages
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Bangla (Native)</span>
+          <span class="skill-bar-pct">100%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill violet" data-width="100%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">English (Advanced)</span>
+          <span class="skill-bar-pct">90%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill violet" data-width="90%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">French (Basic)</span>
+          <span class="skill-bar-pct">30%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill violet" data-width="30%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Hindi (Basic)</span>
+          <span class="skill-bar-pct">30%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill violet" data-width="30%"></div></div>
+      </div>
+    </div>
+    <div class="skill-group reveal reveal-delay-1">
+      <div class="skill-group-title">
+        <span class="color-dot" style="background: var(--gold);"></span> Teaching & Leadership
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Academic Teaching</span>
+          <span class="skill-bar-pct">95%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill gold" data-width="95%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Lab Instruction</span>
+          <span class="skill-bar-pct">92%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill gold" data-width="92%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Communication & Collaboration</span>
+          <span class="skill-bar-pct">90%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill gold" data-width="90%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name">Academic Writing</span>
+          <span class="skill-bar-pct">88%</span>
+        </div>
+        <div class="skill-bar-track"><div class="skill-bar-fill gold" data-width="88%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-tag" style="color: var(--pink);">
+    <span class="tag-dot" style="background: var(--pink);"></span> Research Output
+  </div>
+  <h2 class="section-title reveal">Publications & <span style="color:var(--pink);">Conference</span></h2>
+  <p class="section-subtitle reveal">Peer-reviewed journals and conference presentations advancing materials science and sustainability research.</p>
+  <ul class="pub-list">
+    <li class="pub-item reveal">
+      <h4>Pretreatment Strategies for Enhanced Fermentable Sugar Recovery from Composite Lignocellulosic Feedstocks</h4>
+      <div class="pub-journal">Islam, M. M., Kumar, K., Ding, L., & Cheng, M. H. — 2025 AIChE Annual Meeting (Accepted)</div>
+    </li>
+    <li class="pub-item reveal reveal-delay-1">
+      <h4>Study and Characterization of Rice Husk Ash with Polyester Resin Composite</h4>
+      <div class="pub-journal">Md Mahfujul Islam et al. — Daffodil International University Journal of Science and Technology, Vol. 11, Issue 1, January 2016</div>
+    </li>
+    <li class="pub-item reveal reveal-delay-2">
+      <h4>Physical, Mechanical, and Thermal Properties of Sand Reinforced Polyester Resin Composite</h4>
+      <div class="pub-journal">Md Mahfujul Islam et al. — International Letters of Chemistry, Physics and Astronomy, Vol. 56 (2015), pp 123-128</div>
+    </li>
+    <li class="pub-item reveal">
+      <h4>Polarized Raman Spectra of α-Quartz</h4>
+      <div class="pub-journal">Md Mahfujul Islam et al. — International Letters of Chemistry, Physics and Astronomy, Vol. 56 (2015), pp 115-122</div>
+    </li>
+    <li class="pub-item reveal reveal-delay-1">
+      <h4>Photoluminescence in Analysis of Surface and Interfaces of Semiconductor Nanostructures</h4>
+      <div class="pub-journal">Md Mahfujul Islam et al. — International Letters of Chemistry, Physics and Astronomy, Vol. 57 (2015), pp 102-113</div>
+    </li>
+  </ul>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-tag" style="color: var(--blue);">
+    <span class="tag-dot" style="background: var(--blue);"></span> Continuous Learning
+  </div>
+  <h2 class="section-title reveal">Certifications & <span style="color:var(--blue);">Courses</span></h2>
+  <p class="section-subtitle reveal">Professional development in sustainability and renewable energy through Coursera.</p>
+  <div class="cert-grid">
+    <div class="cert-card reveal">
+      <div class="cert-icon">🌱</div>
+      <div>
+        <h4>Become a Sustainable Business Change Agent</h4>
+        <div class="cert-source">Coursera · Specialization</div>
+      </div>
+    </div>
+    <div class="cert-card reveal reveal-delay-1">
+      <div class="cert-icon">⚡</div>
+      <div>
+        <h4>Exploring Renewable Energy Schemes</h4>
+        <div class="cert-source">Coursera</div>
+      </div>
+    </div>
+    <div class="cert-card reveal reveal-delay-2">
+      <div class="cert-icon">🔋</div>
+      <div>
+        <h4>Renewable Energy Technology Fundamentals</h4>
+        <div class="cert-source">Coursera</div>
+      </div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon">🌍</div>
+      <div>
+        <h4>Politics and Economics of International Energy</h4>
+        <div class="cert-source">Coursera</div>
+      </div>
+    </div>
+    <div class="cert-card reveal reveal-delay-1">
+      <div class="cert-icon">♻️</div>
+      <div>
+        <h4>Introduction to Sustainability</h4>
+        <div class="cert-source">Coursera</div>
+      </div>
+    </div>
+    <div class="cert-card reveal reveal-delay-2">
+      <div class="cert-icon">🏢</div>
+      <div>
+        <h4>Sustainable Business: Big Issues, Big Changes</h4>
+        <div class="cert-source">Coursera</div>
+      </div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon">💡</div>
+      <div>
+        <h4>Renewable Energy & Green Building Entrepreneurship</h4>
+        <div class="cert-source">Coursera</div>
+      </div>
+    </div>
+    <div class="cert-card reveal reveal-delay-1">
+      <div class="cert-icon">📊</div>
+      <div>
+        <h4>First Steps in Making the Business Case for Sustainability</h4>
+        <div class="cert-source">Coursera</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOBBIES -->
+<section id="hobbies">
+  <div class="section-tag" style="color: var(--gold);">
+    <span class="tag-dot" style="background: var(--gold);"></span> Beyond Research
+  </div>
+  <h2 class="section-title reveal">Things I <span style="color:var(--gold);">Love</span> Doing</h2>
+  <p class="section-subtitle reveal">Research is my work, but these passions keep my creative spirit alive.</p>
+  <div class="hobbies-grid">
+    <div class="hobby-card reveal">
+      <div class="hobby-emoji">🖊️</div>
+      <h3>Poetry</h3>
+      <p>Words are my canvas. I find beauty in expressing complex emotions through the rhythm and imagery of poetry — a creative escape from scientific formulas.</p>
+    </div>
+    <div class="hobby-card reveal reveal-delay-1">
+      <div class="hobby-emoji">✍️</div>
+      <h3>Writing & Blogging</h3>
+      <p>From research narratives to reflective essays, I love turning thoughts into compelling stories. Writing bridges the gap between science and everyday life.</p>
+    </div>
+    <div class="hobby-card reveal reveal-delay-2">
+      <div class="hobby-emoji">🌍</div>
+      <h3>Traveling</h3>
+      <p>Having visited multiple countries — from Bangladesh to France to the USA — every journey adds a new perspective and chapter to my understanding of the world.</p>
+    </div>
+    <div class="hobby-card reveal">
+      <div class="hobby-emoji">🏏</div>
+      <h3>Cricket</h3>
+      <p>Former organizer of Jahangirnagar University Cricket Club. The sport taught me teamwork, strategy, and the joy of fair competition.</p>
+    </div>
+    <div class="hobby-card reveal reveal-delay-1">
+      <div class="hobby-emoji">📖</div>
+      <h3>Reading</h3>
+      <p>Always deep in something thought-provoking — from scientific papers to literature and philosophy. A curious mind never stops learning.</p>
+    </div>
+    <div class="hobby-card reveal reveal-delay-2">
+      <div class="hobby-emoji">☕</div>
+      <h3>Coffee & Conversations</h3>
+      <p>Some of my best ideas emerge over a cup of coffee and a deep conversation with curious minds from different walks of life.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG / WRITING -->
+
+<!-- WORLD CLOCK -->
+<section id="worldclock">
+  <div class="section-tag" style="color: var(--teal);">
+    <span class="tag-dot" style="background: var(--teal);"></span> Time Zones
+  </div>
+  <h2 class="section-title reveal">World <span style="color:var(--teal);">Clock</span></h2>
+  <p class="section-subtitle reveal">Search any city to see the current local time — perfect for scheduling across time zones.</p>
+
+  <div class="wc-search-wrap reveal">
+    <div class="wc-search-box" id="wcSearchBox">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="2.5" stroke-linecap="round">
+        <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input id="wcSearchInput" type="text" placeholder="Search cities... (e.g. Tokyo, London, Dubai)" autocomplete="off" />
+      <button class="wc-clear" id="wcClearBtn">×</button>
+    </div>
+    <div class="wc-dropdown" id="wcDropdown"></div>
+  </div>
+
+  <div id="wcClockGrid" class="wc-grid"></div>
+</section>
+
+<!-- BLOG / WRITING -->
+<section id="blog">
+  <div class="section-tag" style="color: var(--pink);">
+    <span class="tag-dot" style="background: var(--pink);"></span> My Writing
+  </div>
+  <h2 class="section-title reveal">Poetry & <span style="color:var(--pink);">Reflections</span></h2>
+  <p class="section-subtitle reveal">Words that flow from the heart — poetry, essays, and reflections on science, life, and everything in between.</p>
+  <div class="blog-grid">
+    <div class="blog-card reveal">
+      <div class="blog-cover">
+        <div class="blog-cover-gradient"></div>
+        <span class="blog-cover-label">Poetry</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-date">Your Date Here</div>
+        <h3>Your First Poem or Writing Title</h3>
+        <p>Share a preview of your poem or writing piece here. Let readers glimpse the emotion and imagery before they dive in...</p>
+        <a href="#" class="blog-read-more">Read More →</a>
+      </div>
+    </div>
+    <div class="blog-card reveal reveal-delay-1">
+      <div class="blog-cover">
+        <div class="blog-cover-gradient"></div>
+        <span class="blog-cover-label">Reflection</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-date">Your Date Here</div>
+        <h3>A Reflection on the Research Journey</h3>
+        <p>Write about your experiences — the late nights in the lab, the moments of discovery, the lessons learned along the way...</p>
+        <a href="#" class="blog-read-more">Read More →</a>
+      </div>
+    </div>
+    <div class="blog-card reveal reveal-delay-2">
+      <div class="blog-cover">
+        <div class="blog-cover-gradient"></div>
+        <span class="blog-cover-label">Creative Writing</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-date">Your Date Here</div>
+        <h3>Another Piece of Your Writing</h3>
+        <p>This space is yours — fill it with essays, prose, or any creative writing that expresses who you are beyond the lab coat...</p>
+        <a href="#" class="blog-read-more">Read More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag" style="color: var(--blue); justify-content: center;">
+    <span class="tag-dot" style="background: var(--blue);"></span> Get In Touch
+  </div>
+  <div class="contact-box reveal">
+    <h2 class="contact-heading">Let's <span style="color: var(--coral);">Connect</span></h2>
+    <p class="contact-desc">Whether you want to collaborate on research, discuss sustainability, or explore academic opportunities — I'd love to hear from you.</p>
+    <div class="contact-grid">
+      <a href="/cdn-cgi/l/email-protection#4c212d242a787f7c7e0c3a2d22282d203f623925282d242362292839" class="contact-item">
+        <span class="contact-icon">✉️</span>
+        <div class="contact-info">
+          <div class="contact-info-label">Email</div>
+          <div class="contact-info-value"><span class="__cf_email__" data-cfemail="bbd6dad3dd8f888b89fbcddad5dfdad7c895ced2dfdad3d495dedfce">[email&#160;protected]</span></div>
+        </div>
+      </a>
+      <a href="tel:+12089977312" class="contact-item">
+        <span class="contact-icon">📞</span>
+        <div class="contact-info">
+          <div class="contact-info-label">Phone</div>
+          <div class="contact-info-value">+1 (208) 997-7312</div>
+        </div>
+      </a>
+      <a href="#" class="contact-item">
+        <span class="contact-icon">🏛️</span>
+        <div class="contact-info">
+          <div class="contact-info-label">University</div>
+          <div class="contact-info-value">University of Idaho</div>
+        </div>
+      </a>
+      <a href="#" class="contact-item">
+        <span class="contact-icon">📍</span>
+        <div class="contact-info">
+          <div class="contact-info-label">Location</div>
+          <div class="contact-info-value">Idaho Falls, ID, USA</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK NOTES -->
+<section id="quicknotes">
+  <div class="section-tag" style="color: var(--teal);">
+    <span class="tag-dot" style="background: var(--teal);"></span> Quick Notes
+  </div>
+  <h2 class="section-title reveal">My <span style="color:var(--teal);">Notes</span></h2>
+  <p class="section-subtitle reveal">Jot down ideas, highlight key points, and keep everything saved right here.</p>
+
+  <div class="qn-app reveal">
+    <!-- Sidebar: note list -->
+    <div class="qn-sidebar">
+      <button class="qn-new-btn" id="qnNewBtn">+ New Note</button>
+      <input class="qn-search" id="qnSearch" placeholder="Search notes..." />
+      <div class="qn-list" id="qnList"></div>
+      <div class="qn-count" id="qnCount"></div>
+    </div>
+
+    <!-- Editor -->
+    <div class="qn-editor" id="qnEditor">
+      <div class="qn-empty-editor" id="qnEmptyEd">
+        <div class="qn-ee-icon">📝</div>
+        <div class="qn-ee-text">Select a note or create a new one</div>
+      </div>
+      <div id="qnEdActive" style="display:none;flex-direction:column;flex:1;overflow:hidden;">
+        <div class="qn-ed-top">
+          <input class="qn-title-input" id="qnTitleIn" placeholder="Note title..." />
+        </div>
+        <div class="qn-toolbar">
+          <button class="qn-tb" onmousedown="event.preventDefault()" onclick="qnExec('bold')" title="Bold"><b>B</b></button>
+          <button class="qn-tb" onmousedown="event.preventDefault()" onclick="qnExec('italic')" title="Italic"><i>I</i></button>
+          <button class="qn-tb" onmousedown="event.preventDefault()" onclick="qnExec('underline')" title="Underline"><u>U</u></button>
+          <button class="qn-tb" onmousedown="event.preventDefault()" onclick="qnExec('strikeThrough')" title="Strike"><s>S</s></button>
+          <div class="qn-sep"></div>
+          <span class="qn-tlabel">Text</span>
+          <div class="qn-tc" style="background:#ff6b5a" onmousedown="event.preventDefault()" onclick="qnColor('#ff6b5a')" title="Important"></div>
+          <div class="qn-tc" style="background:#60a5fa" onmousedown="event.preventDefault()" onclick="qnColor('#60a5fa')" title="Info"></div>
+          <div class="qn-tc" style="background:#a78bfa" onmousedown="event.preventDefault()" onclick="qnColor('#a78bfa')" title="Formula"></div>
+          <div class="qn-tc" style="background:#4ade80" onmousedown="event.preventDefault()" onclick="qnColor('#4ade80')" title="Fact"></div>
+          <div class="qn-tc" style="background:#fbbf24" onmousedown="event.preventDefault()" onclick="qnColor('#fbbf24')" title="Question"></div>
+          <div class="qn-tc" style="background:#f472b6" onmousedown="event.preventDefault()" onclick="qnColor('#f472b6')" title="Remember"></div>
+          <div class="qn-tc" style="background:#eee8e0" onmousedown="event.preventDefault()" onclick="qnColor('#eee8e0')" title="Normal"></div>
+          <div class="qn-sep"></div>
+          <span class="qn-tlabel">Highlight</span>
+          <div class="qn-tc" style="background:rgba(74,222,128,0.35)" onmousedown="event.preventDefault()" onclick="qnHL('rgba(74,222,128,0.35)')" title="Green"></div>
+          <div class="qn-tc" style="background:rgba(96,165,250,0.35)" onmousedown="event.preventDefault()" onclick="qnHL('rgba(96,165,250,0.35)')" title="Blue"></div>
+          <div class="qn-tc" style="background:rgba(251,191,36,0.35)" onmousedown="event.preventDefault()" onclick="qnHL('rgba(251,191,36,0.35)')" title="Yellow"></div>
+          <div class="qn-tc" style="background:rgba(251,113,133,0.35)" onmousedown="event.preventDefault()" onclick="qnHL('rgba(251,113,133,0.35)')" title="Red"></div>
+          <div class="qn-tc" style="background:transparent;border:2px dashed var(--text-dim)" onmousedown="event.preventDefault()" onclick="qnHL('none')" title="Clear"></div>
+          <div class="qn-sep"></div>
+          <button class="qn-tb" onmousedown="event.preventDefault()" onclick="qnExec('insertUnorderedList')" title="Bullets">•</button>
+          <button class="qn-tb" onmousedown="event.preventDefault()" onclick="qnExec('insertOrderedList')" title="Numbers">1.</button>
+        </div>
+        <div class="qn-body-wrap">
+          <div class="qn-body" id="qnBody" contenteditable="true" data-placeholder="Start writing..."></div>
+        </div>
+        <div class="qn-status">
+          <span id="qnWordCount">0 words</span>
+          <span id="qnSaveStatus">Saved</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANGLA TRANSLATOR -->
+<section id="translator">
+  <div class="section-tag" style="color: var(--violet);">
+    <span class="tag-dot" style="background: var(--violet);"></span> Academic Translator
+  </div>
+  <h2 class="section-title reveal">Bangla <span style="color:var(--violet);">Translator</span></h2>
+  <p class="section-subtitle reveal">Paste any text — English, mixed language, informal notes, voice transcripts — and get polished, formal, academic Bangla instantly.</p>
+
+  <div class="reveal">
+    <div class="tr-container">
+      <!-- Input Panel -->
+      <div class="tr-panel">
+        <div class="tr-panel-head">
+          <div class="tr-panel-label"><span class="tr-dot" style="background:var(--coral)"></span>Input — Any Language</div>
+          <div class="tr-head-actions">
+            <button class="tr-head-btn" id="trClearBtn">Clear</button>
+            <button class="tr-head-btn" id="trPasteBtn">Paste</button>
+          </div>
+        </div>
+        <textarea class="tr-textarea" id="trInput" placeholder="Paste or type anything here — English text, mixed Bangla-English, informal writing, voice transcripts, research notes..."></textarea>
+        <div class="tr-panel-foot">
+          <span id="trInputCount">0 chars</span>
+          <span>Source text</span>
+        </div>
+      </div>
+
+      <!-- Output Panel -->
+      <div class="tr-panel">
+        <div class="tr-panel-head">
+          <div class="tr-panel-label"><span class="tr-dot" style="background:var(--violet)"></span>Output — Academic বাংলা</div>
+          <div class="tr-head-actions">
+            <button class="tr-head-btn" id="trCopyBtn">Copy</button>
+          </div>
+        </div>
+        <div class="tr-output bangla-text" id="trOutput">
+          <span class="tr-placeholder">আপনার অনূদিত বাংলা এখানে প্রদর্শিত হবে...</span>
+        </div>
+        <div class="tr-panel-foot">
+          <span id="trOutputCount">0 chars</span>
+          <span id="trStatus">Ready</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Translate button & options -->
+    <div class="tr-actions">
+      <button class="tr-translate-btn" id="trGoBtn">
+        <span class="tr-btn-text">🔄 Translate to Academic বাংলা</span>
+        <span class="tr-spinner"></span>
+      </button>
+    </div>
+    <div class="tr-options">
+      <button class="tr-opt active" data-tone="academic">🎓 Academic</button>
+      <button class="tr-opt" data-tone="formal">📋 Formal</button>
+      <button class="tr-opt" data-tone="simple">✏️ Simple</button>
+      <button class="tr-opt" data-tone="research">🔬 Research</button>
+    </div>
+
+    <!-- History -->
+    <div class="tr-history">
+      <div class="tr-hist-title">📜 Translation History</div>
+      <div class="tr-hist-grid" id="trHistory"></div>
+    </div>
+  </div>
+</section>
+
+<!-- BIOPATHWAY EXPLORER (Step-by-Step Wizard) -->
+<section id="biopathway">
+  <div class="section-tag" style="color: #79a8ff;">
+    <span class="tag-dot" style="background: #79a8ff;"></span> Biomass Intelligence
+  </div>
+  <h2 class="section-title reveal">BioPathway <span style="color:#87f0d1;">Explorer</span></h2>
+  <p class="section-subtitle reveal">Interactive step-by-step biorefinery design tool. Walk through feedstock selection, pretreatment, conversion, and product analysis with detailed mechanisms, literature references, and yield estimates.</p>
+
+  <div class="bpe-app reveal">
+    <div class="bpe-header">
+      <div class="bpe-logo">
+        <div class="bpe-logo-icon">🧬</div>
+        <div>
+          <h3>BioPathway Explorer</h3>
+          <p>Biomass-to-Value Intelligence</p>
+        </div>
+      </div>
+      <button class="bpe-restart" onclick="bpeRestart()">↺ Start Over</button>
+    </div>
+    <div class="bpe-steps" id="bpeSteps"></div>
+    <div class="bpe-content" id="bpeContent"></div>
+    <div class="bpe-footer">
+      <button class="bpe-btn" id="bpeBackBtn" onclick="bpeBack()">← Back</button>
+      <span class="bpe-step-count" id="bpeStepCount"></span>
+      <button class="bpe-btn primary" id="bpeNextBtn" onclick="bpeNext()">Next →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Md Mahfujul Islam · Built with <span class="footer-heart">♥</span> and curiosity</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Scroll reveal animations
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Animated skill bars
+  const skillBars = document.querySelectorAll('.skill-bar-fill');
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.width = entry.target.dataset.width;
+        skillObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  skillBars.forEach(bar => skillObserver.observe(bar));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('navLinks').classList.remove('open');
+      }
+    });
+  });
+
+  // Navbar background on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) nav.style.background = 'rgba(13,13,18,0.9)';
+    else nav.style.background = 'rgba(13,13,18,0.7)';
+  });
+
+  // ===== WORLD CLOCK =====
+  const WC_DATA = [
+    { city:"New York",country:"United States",tz:"America/New_York",emoji:"🗽" },
+    { city:"Los Angeles",country:"United States",tz:"America/Los_Angeles",emoji:"🌴" },
+    { city:"Chicago",country:"United States",tz:"America/Chicago",emoji:"🌆" },
+    { city:"Denver",country:"United States",tz:"America/Denver",emoji:"🏔️" },
+    { city:"Anchorage",country:"United States",tz:"America/Anchorage",emoji:"🐻" },
+    { city:"Honolulu",country:"United States",tz:"Pacific/Honolulu",emoji:"🌺" },
+    { city:"Phoenix",country:"United States",tz:"America/Phoenix",emoji:"🌵" },
+    { city:"Miami",country:"United States",tz:"America/New_York",emoji:"🏖️" },
+    { city:"Houston",country:"United States",tz:"America/Chicago",emoji:"🚀" },
+    { city:"Seattle",country:"United States",tz:"America/Los_Angeles",emoji:"☕" },
+    { city:"London",country:"United Kingdom",tz:"Europe/London",emoji:"🇬🇧" },
+    { city:"Paris",country:"France",tz:"Europe/Paris",emoji:"🗼" },
+    { city:"Berlin",country:"Germany",tz:"Europe/Berlin",emoji:"🇩🇪" },
+    { city:"Rome",country:"Italy",tz:"Europe/Rome",emoji:"🏛️" },
+    { city:"Madrid",country:"Spain",tz:"Europe/Madrid",emoji:"🇪🇸" },
+    { city:"Amsterdam",country:"Netherlands",tz:"Europe/Amsterdam",emoji:"🌷" },
+    { city:"Stockholm",country:"Sweden",tz:"Europe/Stockholm",emoji:"🇸🇪" },
+    { city:"Oslo",country:"Norway",tz:"Europe/Oslo",emoji:"🇳🇴" },
+    { city:"Helsinki",country:"Finland",tz:"Europe/Helsinki",emoji:"🇫🇮" },
+    { city:"Athens",country:"Greece",tz:"Europe/Athens",emoji:"🏛️" },
+    { city:"Moscow",country:"Russia",tz:"Europe/Moscow",emoji:"🇷🇺" },
+    { city:"Istanbul",country:"Turkey",tz:"Europe/Istanbul",emoji:"🕌" },
+    { city:"Dubai",country:"UAE",tz:"Asia/Dubai",emoji:"🏙️" },
+    { city:"Mumbai",country:"India",tz:"Asia/Kolkata",emoji:"🇮🇳" },
+    { city:"Delhi",country:"India",tz:"Asia/Kolkata",emoji:"🕌" },
+    { city:"Bangalore",country:"India",tz:"Asia/Kolkata",emoji:"💻" },
+    { city:"Bangkok",country:"Thailand",tz:"Asia/Bangkok",emoji:"🇹🇭" },
+    { city:"Singapore",country:"Singapore",tz:"Asia/Singapore",emoji:"🇸🇬" },
+    { city:"Hong Kong",country:"China",tz:"Asia/Hong_Kong",emoji:"🏙️" },
+    { city:"Shanghai",country:"China",tz:"Asia/Shanghai",emoji:"🇨🇳" },
+    { city:"Beijing",country:"China",tz:"Asia/Shanghai",emoji:"🏯" },
+    { city:"Tokyo",country:"Japan",tz:"Asia/Tokyo",emoji:"🗾" },
+    { city:"Osaka",country:"Japan",tz:"Asia/Tokyo",emoji:"🏯" },
+    { city:"Seoul",country:"South Korea",tz:"Asia/Seoul",emoji:"🇰🇷" },
+    { city:"Taipei",country:"Taiwan",tz:"Asia/Taipei",emoji:"🇹🇼" },
+    { city:"Jakarta",country:"Indonesia",tz:"Asia/Jakarta",emoji:"🇮🇩" },
+    { city:"Kuala Lumpur",country:"Malaysia",tz:"Asia/Kuala_Lumpur",emoji:"🇲🇾" },
+    { city:"Manila",country:"Philippines",tz:"Asia/Manila",emoji:"🇵🇭" },
+    { city:"Karachi",country:"Pakistan",tz:"Asia/Karachi",emoji:"🇵🇰" },
+    { city:"Tehran",country:"Iran",tz:"Asia/Tehran",emoji:"🇮🇷" },
+    { city:"Riyadh",country:"Saudi Arabia",tz:"Asia/Riyadh",emoji:"🇸🇦" },
+    { city:"Dhaka",country:"Bangladesh",tz:"Asia/Dhaka",emoji:"🇧🇩" },
+    { city:"Kathmandu",country:"Nepal",tz:"Asia/Kathmandu",emoji:"🏔️" },
+    { city:"Sydney",country:"Australia",tz:"Australia/Sydney",emoji:"🦘" },
+    { city:"Melbourne",country:"Australia",tz:"Australia/Melbourne",emoji:"🇦🇺" },
+    { city:"Perth",country:"Australia",tz:"Australia/Perth",emoji:"🇦🇺" },
+    { city:"Auckland",country:"New Zealand",tz:"Pacific/Auckland",emoji:"🇳🇿" },
+    { city:"São Paulo",country:"Brazil",tz:"America/Sao_Paulo",emoji:"🇧🇷" },
+    { city:"Buenos Aires",country:"Argentina",tz:"America/Argentina/Buenos_Aires",emoji:"🇦🇷" },
+    { city:"Lima",country:"Peru",tz:"America/Lima",emoji:"🇵🇪" },
+    { city:"Bogotá",country:"Colombia",tz:"America/Bogota",emoji:"🇨🇴" },
+    { city:"Santiago",country:"Chile",tz:"America/Santiago",emoji:"🇨🇱" },
+    { city:"Mexico City",country:"Mexico",tz:"America/Mexico_City",emoji:"🇲🇽" },
+    { city:"Toronto",country:"Canada",tz:"America/Toronto",emoji:"🇨🇦" },
+    { city:"Vancouver",country:"Canada",tz:"America/Vancouver",emoji:"🍁" },
+    { city:"Cairo",country:"Egypt",tz:"Africa/Cairo",emoji:"🏛️" },
+    { city:"Lagos",country:"Nigeria",tz:"Africa/Lagos",emoji:"🇳🇬" },
+    { city:"Nairobi",country:"Kenya",tz:"Africa/Nairobi",emoji:"🇰🇪" },
+    { city:"Johannesburg",country:"South Africa",tz:"Africa/Johannesburg",emoji:"🇿🇦" },
+    { city:"Casablanca",country:"Morocco",tz:"Africa/Casablanca",emoji:"🇲🇦" },
+    { city:"Reykjavik",country:"Iceland",tz:"Atlantic/Reykjavik",emoji:"🇮🇸" },
+    { city:"Lisbon",country:"Portugal",tz:"Europe/Lisbon",emoji:"🇵🇹" },
+    { city:"Dublin",country:"Ireland",tz:"Europe/Dublin",emoji:"🍀" },
+    { city:"Zurich",country:"Switzerland",tz:"Europe/Zurich",emoji:"🇨🇭" },
+    { city:"Vienna",country:"Austria",tz:"Europe/Vienna",emoji:"🎵" },
+    { city:"Prague",country:"Czech Republic",tz:"Europe/Prague",emoji:"🇨🇿" },
+    { city:"Warsaw",country:"Poland",tz:"Europe/Warsaw",emoji:"🇵🇱" },
+    { city:"Doha",country:"Qatar",tz:"Asia/Qatar",emoji:"🇶🇦" },
+    { city:"Colombo",country:"Sri Lanka",tz:"Asia/Colombo",emoji:"🇱🇰" },
+    { city:"Idaho Falls",country:"United States",tz:"America/Boise",emoji:"🥔" },
+  ];
+
+  let wcSelected = [
+    WC_DATA.find(l => l.city === "Idaho Falls"),
+    WC_DATA.find(l => l.city === "London"),
+    WC_DATA.find(l => l.city === "Tokyo"),
+    WC_DATA.find(l => l.city === "Dubai"),
+  ];
+
+  const wcInput = document.getElementById('wcSearchInput');
+  const wcBox = document.getElementById('wcSearchBox');
+  const wcClear = document.getElementById('wcClearBtn');
+  const wcDrop = document.getElementById('wcDropdown');
+  const wcGrid = document.getElementById('wcClockGrid');
+
+  function wcTimeInfo(tz) {
+    const now = new Date();
+    const time = new Intl.DateTimeFormat('en-US',{timeZone:tz,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true}).format(now);
+    const date = new Intl.DateTimeFormat('en-US',{timeZone:tz,weekday:'long',month:'long',day:'numeric'}).format(now);
+    const hour = parseInt(new Intl.DateTimeFormat('en-US',{timeZone:tz,hour:'numeric',hour12:false}).format(now));
+    return {time, date, hour};
+  }
+
+  function wcOffset(tz) {
+    const parts = new Intl.DateTimeFormat('en-US',{timeZone:tz,timeZoneName:'shortOffset'}).formatToParts(new Date());
+    const p = parts.find(p=>p.type==='timeZoneName');
+    return p ? p.value : '';
+  }
+
+  function wcSky(h) {
+    if(h>=6&&h<8)  return 'linear-gradient(135deg, #ff9a56 0%, #ffcd82 40%, #87ceeb 100%)';
+    if(h>=8&&h<11)  return 'linear-gradient(135deg, #87ceeb 0%, #a8d8f0 50%, #f0f4c3 100%)';
+    if(h>=11&&h<16) return 'linear-gradient(135deg, #4a90d9 0%, #87ceeb 50%, #b0d4f1 100%)';
+    if(h>=16&&h<18) return 'linear-gradient(135deg, #ff7eb3 0%, #ff9a56 30%, #ffd194 60%, #87ceeb 100%)';
+    if(h>=18&&h<20) return 'linear-gradient(135deg, #2c3e6b 0%, #6b3fa0 40%, #ff6b6b 80%, #ffd194 100%)';
+    if(h>=20&&h<22) return 'linear-gradient(135deg, #0f1b3d 0%, #1a2a5e 50%, #2c3e6b 100%)';
+    return 'linear-gradient(135deg, #070b1a 0%, #0f1b3d 50%, #1a1a3e 100%)';
+  }
+
+  function wcRenderGrid() {
+    if(!wcSelected.length) {
+      wcGrid.innerHTML = '<div class="wc-empty"><div class="wc-empty-icon">🔍</div><div class="wc-empty-text">Search for a city to get started</div></div>';
+      return;
+    }
+    wcGrid.innerHTML = '';
+    wcSelected.forEach((loc, idx) => {
+      const info = wcTimeInfo(loc.tz);
+      const isLight = info.hour >= 7 && info.hour < 18;
+      const txtC = isLight ? 'rgba(0,0,0,0.85)' : 'rgba(255,255,255,0.95)';
+      const subC = isLight ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.5)';
+      const shadow = isLight ? '0 8px 30px rgba(0,0,0,0.1)' : '0 8px 30px rgba(0,0,0,0.35)';
+      let stars = '';
+      if(!isLight) stars = '<div class="wc-star" style="top:16px;right:55px;width:3px;height:3px"></div><div class="wc-star" style="top:32px;right:28px;width:2px;height:2px"></div><div class="wc-star" style="top:10px;right:95px;width:2px;height:2px"></div>';
+      const card = document.createElement('div');
+      card.className = 'wc-card reveal visible';
+      card.style.background = wcSky(info.hour);
+      card.style.boxShadow = shadow;
+      card.innerHTML = `${stars}<button class="wc-remove" data-idx="${idx}">×</button>
+        <div><div class="wc-card-header"><span class="wc-card-emoji">${loc.emoji}</span><span class="wc-card-city" style="color:${txtC}">${loc.city}</span></div>
+        <div class="wc-card-sub" style="color:${subC}">${loc.country} · ${wcOffset(loc.tz)}</div></div>
+        <div><div class="wc-card-time" style="color:${txtC}">${info.time}</div>
+        <div class="wc-card-date" style="color:${subC}">${info.date}</div></div>`;
+      wcGrid.appendChild(card);
+    });
+  }
+
+  function wcRenderDropdown() {
+    const q = wcInput.value.toLowerCase();
+    if(!q) { wcDrop.classList.remove('visible'); return; }
+    const filtered = WC_DATA.filter(l =>
+      !wcSelected.some(s=>s.city===l.city&&s.tz===l.tz) &&
+      (l.city.toLowerCase().includes(q)||l.country.toLowerCase().includes(q))
+    ).slice(0,8);
+    if(!filtered.length) {
+      wcDrop.innerHTML = '<div class="wc-no-results">No cities found matching "'+wcInput.value+'"</div>';
+    } else {
+      wcDrop.innerHTML = filtered.map((l,i)=>{
+        const info = wcTimeInfo(l.tz);
+        return '<button class="wc-dropdown-item" data-tz-idx="'+WC_DATA.indexOf(l)+'"><div class="wc-left"><span style="font-size:1.2rem">'+l.emoji+'</span><div><div class="wc-city">'+l.city+'</div><div class="wc-country">'+l.country+'</div></div></div><span class="wc-preview">'+info.time+'</span></button>';
+      }).join('');
+    }
+    wcDrop.classList.add('visible');
+  }
+
+  wcInput.addEventListener('input', () => { wcClear.style.display = wcInput.value ? 'block' : 'none'; wcRenderDropdown(); });
+  wcInput.addEventListener('focus', () => { wcBox.classList.add('active'); if(wcInput.value) wcRenderDropdown(); });
+  wcClear.addEventListener('click', () => { wcInput.value=''; wcClear.style.display='none'; wcDrop.classList.remove('visible'); wcInput.focus(); });
+  wcDrop.addEventListener('click', (e) => {
+    const btn = e.target.closest('.wc-dropdown-item');
+    if(!btn) return;
+    wcSelected.push(WC_DATA[parseInt(btn.dataset.tzIdx)]);
+    wcInput.value=''; wcClear.style.display='none'; wcDrop.classList.remove('visible');
+    wcRenderGrid();
+  });
+  wcGrid.addEventListener('click', (e) => {
+    const btn = e.target.closest('.wc-remove');
+    if(!btn) return;
+    wcSelected.splice(parseInt(btn.dataset.idx),1);
+    wcRenderGrid();
+  });
+  document.addEventListener('mousedown', (e) => {
+    if(!wcDrop.contains(e.target) && e.target !== wcInput) { wcDrop.classList.remove('visible'); wcBox.classList.remove('active'); }
+  });
+  // ===== QUICK NOTES =====
+  let qnNotes = JSON.parse(localStorage.getItem('qn_notes') || '[]');
+  let qnActiveId = null;
+  let qnSearchQ = '';
+
+  function qnSave() { localStorage.setItem('qn_notes', JSON.stringify(qnNotes)); }
+
+  function qnRenderList() {
+    const list = document.getElementById('qnList');
+    let filtered = qnNotes;
+    if (qnSearchQ) {
+      const q = qnSearchQ.toLowerCase();
+      filtered = qnNotes.filter(n => (n.title||'').toLowerCase().includes(q) || (n.plain||'').toLowerCase().includes(q));
+    }
+    filtered.sort((a,b) => new Date(b.updated) - new Date(a.updated));
+    list.innerHTML = '';
+    filtered.forEach(n => {
+      const d = new Date(n.updated).toLocaleDateString('en-US', {month:'short', day:'numeric'});
+      const wc = (n.plain||'').split(/\s+/).filter(Boolean).length;
+      const div = document.createElement('div');
+      div.className = 'qn-item' + (qnActiveId===n.id?' active':'');
+      div.innerHTML = '<div class="qn-item-title">'+(n.title||'Untitled')+'</div><div class="qn-item-preview">'+(n.plain||'Empty note...')+'</div><div class="qn-item-meta">'+d+' · '+wc+' words</div><button class="qn-item-del" data-id="'+n.id+'">×</button>';
+      div.addEventListener('click', (e) => {
+        if(e.target.classList.contains('qn-item-del')){
+          e.stopPropagation();
+          qnNotes = qnNotes.filter(x=>x.id!==n.id);
+          if(qnActiveId===n.id){ qnActiveId=null; qnShowEmpty(); }
+          qnSave(); qnRenderList(); return;
+        }
+        qnOpen(n.id);
+      });
+      list.appendChild(div);
+    });
+    document.getElementById('qnCount').textContent = qnNotes.length + ' note' + (qnNotes.length!==1?'s':'');
+  }
+
+  function qnOpen(id) {
+    qnSaveActive();
+    const n = qnNotes.find(x=>x.id===id);
+    if(!n) return;
+    qnActiveId = id;
+    document.getElementById('qnEmptyEd').style.display = 'none';
+    document.getElementById('qnEdActive').style.display = 'flex';
+    document.getElementById('qnTitleIn').value = n.title || '';
+    document.getElementById('qnBody').innerHTML = n.content || '';
+    qnUpdateWordCount();
+    qnRenderList();
+  }
+
+  function qnShowEmpty() {
+    document.getElementById('qnEmptyEd').style.display = 'flex';
+    document.getElementById('qnEdActive').style.display = 'none';
+  }
+
+  function qnSaveActive() {
+    if(!qnActiveId) return;
+    const n = qnNotes.find(x=>x.id===qnActiveId);
+    if(!n) return;
+    n.title = document.getElementById('qnTitleIn').value;
+    n.content = document.getElementById('qnBody').innerHTML;
+    n.plain = document.getElementById('qnBody').innerText;
+    n.updated = new Date().toISOString();
+    qnSave();
+    document.getElementById('qnSaveStatus').textContent = 'Saved ✓';
+  }
+
+  function qnCreate() {
+    qnSaveActive();
+    const n = { id:'qn_'+Date.now()+'_'+Math.random().toString(36).substr(2,4), title:'', content:'', plain:'', updated:new Date().toISOString() };
+    qnNotes.unshift(n);
+    qnSave();
+    qnOpen(n.id);
+    document.getElementById('qnTitleIn').focus();
+  }
+
+  function qnUpdateWordCount() {
+    const text = document.getElementById('qnBody')?.innerText || '';
+    const wc = text.split(/\s+/).filter(Boolean).length;
+    const el = document.getElementById('qnWordCount');
+    if(el) el.textContent = wc + ' word' + (wc!==1?'s':'');
+  }
+
+  function qnExec(cmd) { document.execCommand(cmd, false, null); document.getElementById('qnBody').focus(); }
+  function qnColor(hex) { document.execCommand('foreColor', false, hex); document.getElementById('qnBody').focus(); }
+  function qnHL(c) { if(c==='none') document.execCommand('removeFormat',false,null); else document.execCommand('hiliteColor',false,c); document.getElementById('qnBody').focus(); }
+
+  document.getElementById('qnNewBtn').addEventListener('click', qnCreate);
+  document.getElementById('qnSearch').addEventListener('input', (e) => { qnSearchQ=e.target.value; qnRenderList(); });
+  document.getElementById('qnBody').addEventListener('input', () => { qnUpdateWordCount(); document.getElementById('qnSaveStatus').textContent = 'Editing...'; });
+
+  // Auto-save every 3 seconds
+  setInterval(() => { if(qnActiveId) { qnSaveActive(); qnRenderList(); } }, 3000);
+
+  qnRenderList();
+
+  // ===== BANGLA TRANSLATOR =====
+  let trHistory = JSON.parse(localStorage.getItem('tr_history') || '[]');
+  let trTone = 'academic';
+
+  const TONE_PROMPTS = {
+    academic: 'You are an expert multilingual translator and academic Bangla editor. Transform the given text into polished, formal, academically strong Bangla. Requirements: meaning must remain accurate, tone must be formal and scholarly, wording must be refined, sentence flow must be smooth, technical and research-related terms must remain precise, avoid literal translation when unnatural, remove fillers repetition and spoken-language noise, make the final output publication-ready in tone. Return only the final Bangla text.',
+    formal: 'You are a professional Bangla translator. Convert the following text into clear, formal Bangla suitable for official documents and professional communication. Maintain accuracy, use proper grammar, and ensure natural flow. Return only the Bangla text.',
+    simple: 'You are a Bangla translator. Convert the following text into simple, easy-to-understand Bangla. Keep sentences short and clear. Use everyday vocabulary. Return only the Bangla text.',
+    research: 'You are a scientific Bangla translator specializing in environmental science and research. Convert the following text into precise, research-grade academic Bangla. Maintain all scientific terminology accurately, use standard research paper tone, keep citations and technical terms intact where needed. Return only the Bangla text.'
+  };
+
+  function trRenderHistory() {
+    const el = document.getElementById('trHistory');
+    if (!trHistory.length) { el.innerHTML = '<div style="color:var(--text-dim);font-size:0.8rem;padding:0.5rem">No translations yet</div>'; return; }
+    el.innerHTML = trHistory.slice(0, 12).map((h, i) => {
+      const d = new Date(h.date).toLocaleDateString('en-US', {month:'short', day:'numeric', hour:'2-digit', minute:'2-digit'});
+      return '<div class="tr-hist-card" data-i="'+i+'"><div class="tr-hist-src">'+h.src.substring(0,120)+'</div><div class="tr-hist-out">'+h.out.substring(0,120)+'</div><div class="tr-hist-meta">'+d+' · '+h.tone+'</div><button class="tr-hist-del" data-i="'+i+'">×</button></div>';
+    }).join('');
+    el.querySelectorAll('.tr-hist-card').forEach(c => c.addEventListener('click', e => {
+      if (e.target.classList.contains('tr-hist-del')) {
+        e.stopPropagation();
+        trHistory.splice(+e.target.dataset.i, 1);
+        localStorage.setItem('tr_history', JSON.stringify(trHistory));
+        trRenderHistory(); return;
+      }
+      const h = trHistory[+c.dataset.i];
+      document.getElementById('trInput').value = h.src;
+      document.getElementById('trOutput').innerHTML = h.out;
+      document.getElementById('trInputCount').textContent = h.src.length + ' chars';
+      document.getElementById('trOutputCount').textContent = h.out.length + ' chars';
+    }));
+  }
+
+  // Tone selector
+  document.querySelectorAll('.tr-opt').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.tr-opt').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    trTone = b.dataset.tone;
+  }));
+
+  // Input char count
+  document.getElementById('trInput').addEventListener('input', () => {
+    document.getElementById('trInputCount').textContent = document.getElementById('trInput').value.length + ' chars';
+  });
+
+  // Clear
+  document.getElementById('trClearBtn').addEventListener('click', () => {
+    document.getElementById('trInput').value = '';
+    document.getElementById('trOutput').innerHTML = '<span class="tr-placeholder">আপনার অনূদিত বাংলা এখানে প্রদর্শিত হবে...</span>';
+    document.getElementById('trInputCount').textContent = '0 chars';
+    document.getElementById('trOutputCount').textContent = '0 chars';
+    document.getElementById('trStatus').textContent = 'Ready';
+  });
+
+  // Paste
+  document.getElementById('trPasteBtn').addEventListener('click', async () => {
+    try { const t = await navigator.clipboard.readText(); document.getElementById('trInput').value = t; document.getElementById('trInputCount').textContent = t.length + ' chars'; } catch(e) {}
+  });
+
+  // Copy
+  document.getElementById('trCopyBtn').addEventListener('click', () => {
+    const text = document.getElementById('trOutput').innerText;
+    if (!text || text.includes('প্রদর্শিত হবে')) return;
+    navigator.clipboard.writeText(text).then(() => {
+      document.getElementById('trStatus').textContent = 'Copied ✓';
+      setTimeout(() => document.getElementById('trStatus').textContent = 'Ready', 2000);
+    });
+  });
+
+  // Translate
+  document.getElementById('trGoBtn').addEventListener('click', async () => {
+    const src = document.getElementById('trInput').value.trim();
+    if (!src) return;
+    const btn = document.getElementById('trGoBtn');
+    btn.classList.add('loading'); btn.disabled = true;
+    document.getElementById('trStatus').textContent = 'Translating...';
+    document.getElementById('trOutput').innerHTML = '<span class="tr-placeholder" style="color:var(--violet)">অনুবাদ চলছে... / Translating...</span>';
+
+    try {
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 4000,
+          system: TONE_PROMPTS[trTone],
+          messages: [{ role: 'user', content: src }]
+        })
+      });
+      const data = await response.json();
+      const out = data.content?.map(c => c.text || '').join('') || 'Translation failed.';
+      document.getElementById('trOutput').innerHTML = out.replace(/\n/g, '<br>');
+      document.getElementById('trOutputCount').textContent = out.length + ' chars';
+      document.getElementById('trStatus').textContent = 'Done ✓';
+
+      // Save to history
+      trHistory.unshift({ src: src.substring(0, 500), out: out.substring(0, 500), tone: trTone, date: new Date().toISOString() });
+      if (trHistory.length > 30) trHistory = trHistory.slice(0, 30);
+      localStorage.setItem('tr_history', JSON.stringify(trHistory));
+      trRenderHistory();
+    } catch (err) {
+      document.getElementById('trOutput').innerHTML = '<span style="color:var(--coral)">Error: Could not connect to translation API. Please try again.</span>';
+      document.getElementById('trStatus').textContent = 'Error';
+    }
+    btn.classList.remove('loading'); btn.disabled = false;
+  });
+
+  trRenderHistory();
+
+  wcRenderGrid();
+  setInterval(wcRenderGrid, 1000);
+
+
+
+  // ===== BIOPATHWAY EXPLORER (Step-by-Step Wizard) =====
+  const BPE = { step: 0, feedstock: null, pretreatment: null, conversion: null, product: null, mass: 1000, expandedSections: {} };
+
+  const STEPS = [
+    { id:"feedstock", label:"Feedstock", icon:"🌿" },
+    { id:"pretreatment", label:"Pretreatment", icon:"⚗️" },
+    { id:"conversion", label:"Conversion", icon:"⚙️" },
+    { id:"product", label:"Product", icon:"🎯" },
+    { id:"results", label:"Results", icon:"📊" }
+  ];
+
+  const BPEDATA = {
+    "Corn Stover": {
+      emoji:"🌽", desc:"Agricultural residue from maize harvest — one of the most abundant and studied lignocellulosic feedstocks globally.",
+      composition:{Cellulose:37,Hemicellulose:28,Lignin:18,Ash:7,Extractives:10},
+      literature:"Kim & Dale (2004) estimated ~80 million dry tonnes/year available in the US alone. Its relatively low lignin and high carbohydrate content make it a benchmark feedstock for 2G bioethanol research (Wyman et al., 2005).",
+      pretreatments:{
+        "Dilute Acid":{
+          desc:"Uses dilute H₂SO₄ (0.5–2% w/v) at 120–200°C to selectively hydrolyze hemicellulose, exposing cellulose microfibrils.",
+          mechanism:"Proton-catalyzed cleavage of glycosidic bonds in hemicellulose releases xylose and arabinose into the liquid phase. Lignin is redistributed but not fully removed. Cellulose crystallinity may slightly increase as amorphous regions are dissolved.",
+          conditions:"0.5–2% H₂SO₄, 120–200°C, 5–30 min residence time. Severity factor (log R₀) typically 3.0–4.0.",
+          pros:["Highly effective hemicellulose removal (>85%)","Well-studied at pilot and demo scale","Compatible with enzymatic hydrolysis"],
+          cons:["Generates furfural, HMF, and acetic acid inhibitors","Requires corrosion-resistant reactors","Partial lignin re-condensation can occur"],
+          literature:"Lloyd & Wyman (2005) showed >90% xylan removal at 160°C/0.5% H₂SO₄. Inhibitor profiles characterized by Palmqvist & Hahn-Hägerdal (2000). NREL (Humbird et al., 2011) use dilute acid as baseline pretreatment for TEA modeling.",
+          nanoChanges:"SEM reveals surface roughening and pore opening. XRD shows increased crystallinity index (CrI) from ~45% to ~55% as amorphous hemicellulose is removed. FTIR confirms loss of xylan-associated bands at ~1740 cm⁻¹.",
+          analytics:["SEM — surface morphology changes","XRD — crystallinity index shift","FTIR — hemicellulose band disappearance","HPLC — xylose, glucose, inhibitor quantification","Severity factor calculation"]
+        },
+        "AFEX":{
+          desc:"Ammonia Fiber Expansion uses liquid ammonia at high pressure (60–100°C, 250–300 psi) followed by rapid decompression.",
+          mechanism:"Ammonia cleaves lignin-carbohydrate linkages and decrystallizes cellulose via ammonolysis. The explosive decompression physically disrupts cell wall ultrastructure. Unlike acid pretreatment, nearly all solids are retained — a 'dry-to-dry' process.",
+          conditions:"1:1 NH₃-to-biomass ratio, 60–100°C, 5–30 min, rapid pressure release.",
+          pros:["No liquid stream generated — simplified process","Low inhibitor formation","Effective on grasses and agricultural residues"],
+          cons:["Ammonia recovery is energy-intensive","Less effective on high-lignin hardwoods","Capital cost for pressure vessels"],
+          literature:"Dale et al. (1996) pioneered AFEX; Balan et al. (2009) demonstrated >90% glucan conversion on corn stover post-AFEX. Chundawat et al. (2011) elucidated nanoscale cellulose decrystallization using neutron scattering.",
+          nanoChanges:"Cellulose III₁ allomorph may form, reducing crystallinity. Lignin migrates to the surface. Cell wall delamination visible at nanoscale via TEM. Pore volume increases significantly.",
+          analytics:["TEM — cell wall delamination","XRD — cellulose allomorph identification","N₂ physisorption — pore volume increase","Ammonia mass balance","Enzymatic digestibility assay"]
+        },
+        "Steam Explosion":{
+          desc:"High-pressure saturated steam (160–240°C) followed by sudden decompression causes explosive cell-wall rupture.",
+          mechanism:"Autohydrolysis at high temperature cleaves acetyl groups from hemicellulose, generating acetic acid in situ. This catalyzes hemicellulose hydrolysis. The explosive decompression shatters the fibrous structure, dramatically increasing accessible surface area.",
+          conditions:"160–240°C, 1–10 min, severity factor log R₀ = 3.0–4.5. No chemical catalyst required (autohydrolysis).",
+          pros:["Low chemical input","Effective on many biomass types","Scalable and commercially proven"],
+          cons:["Can degrade sugars at high severity","Lignin re-condensation possible","Requires pressure-rated equipment"],
+          literature:"Overend & Chornet (1987) formalized severity factor. Jacquet et al. (2015) reviewed industrial-scale steam explosion. Excoffier et al. (1991) characterized autohydrolysis chemistry.",
+          nanoChanges:"Dramatic fiber separation and fragmentation. SEM shows exposed microfibrils. Cellulose crystallinity may increase moderately. Hemicellulose-derived oligomers appear in wash liquor.",
+          analytics:["SEM — fiber fragmentation","Sugar and inhibitor analysis (HPLC)","Particle size distribution","Water retention value (WRV)","Severity factor optimization"]
+        },
+        "Alkaline":{
+          desc:"NaOH or Ca(OH)₂ at mild temperatures (25–120°C) selectively dissolves lignin and swells cellulose.",
+          mechanism:"Hydroxide ions cleave ester and ether linkages in lignin-carbohydrate complexes (LCCs). Lignin is partially solubilized and removed. Cellulose swells through mercerization-like effects, increasing enzyme accessibility. Hemicellulose is partially preserved.",
+          conditions:"1–10% NaOH or lime, 25–120°C, 30 min to 24 hours depending on severity.",
+          pros:["Effective lignin removal (40–65%)","Low sugar degradation","Preserves hemicellulose for co-fermentation"],
+          cons:["Long residence times at low temperature","Alkali recovery needed for economics","Less effective on softwoods"],
+          literature:"Chang & Holtzapple (2000) showed lime pretreatment achieving >90% enzymatic digestibility. Kim & Holtzapple (2006) optimized NaOH loading. Xu et al. (2016) reviewed alkaline pretreatment mechanisms.",
+          nanoChanges:"Lignin removal exposes cellulose microfibrils. Cellulose swelling increases water retention. FTIR shows reduced lignin aromatic bands (~1510, 1600 cm⁻¹). Surface area increases measured by BET.",
+          analytics:["Klason lignin determination","FTIR — lignin band monitoring","BET — surface area change","NMR — LCC bond cleavage evidence","Kappa number (pulping metric)"]
+        }
+      },
+      conversions:{
+        "Enzymatic Hydrolysis + SSF":{
+          desc:"Cellulase enzymes convert cellulose to glucose, then simultaneous saccharification and fermentation (SSF) couples this with yeast-based ethanol production.",
+          mechanism:"Cellulase cocktails (endoglucanases, exoglucanases/cellobiohydrolases, β-glucosidases) synergistically deconstruct cellulose. Endoglucanases create chain breaks, exoglucanases processively release cellobiose from chain ends, and β-glucosidases hydrolyze cellobiose to glucose. In SSF, fermenting organisms consume glucose as it is released, reducing end-product inhibition.",
+          literature:"Lynd et al. (2002) reviewed SSF thermodynamics and kinetics. Novozymes Cellic® CTec3 data sheets report 90%+ glucan conversion on well-pretreated corn stover.",
+          products:["Ethanol"],
+          yieldNote:"Theoretical maximum: 0.51 g ethanol/g glucose. Practical: 0.24–0.28 kg ethanol per kg dry biomass.",
+          analytics:["HPLC — glucose, cellobiose, ethanol","DNS assay — reducing sugars","Enzyme activity assays (FPU, CMCase)","Cell density monitoring"]
+        },
+        "Anaerobic Digestion":{
+          desc:"Mixed microbial consortia convert organic matter to biogas (CH₄ + CO₂) in oxygen-free reactors.",
+          mechanism:"Four sequential stages: (1) Hydrolysis — extracellular enzymes break polymers into monomers; (2) Acidogenesis — fermentative bacteria produce VFAs, alcohols, CO₂, H₂; (3) Acetogenesis — syntrophic bacteria convert higher VFAs to acetate, CO₂, H₂; (4) Methanogenesis — archaea produce CH₄ from acetate or CO₂+H₂.",
+          literature:"Angelidaki et al. (2009) provided the definitive review of AD biochemistry. Batstone et al. (2002) developed ADM1 — the standard kinetic framework.",
+          products:["Biogas"],
+          yieldNote:"Corn stover BMP: ~200–280 NL CH₄/kg VS. Pretreatment can increase BMP by 20–60%.",
+          analytics:["GC-TCD — CH₄, CO₂ in biogas","TS/VS analysis","pH, alkalinity, VFA/alkalinity ratio","COD balance","BMP assay protocol"]
+        },
+        "Catalytic Dehydration":{
+          desc:"Acid-catalyzed dehydration of pentose sugars (xylose, arabinose) to furfural in aqueous or biphasic systems.",
+          mechanism:"Xylose undergoes cyclic dehydration losing three water molecules to form furfural. Side reactions include resinification and condensation with sugars to form humins. Biphasic systems improve yield by continuously extracting furfural.",
+          literature:"Zeitsch (2000) wrote the definitive monograph on furfural chemistry. Weingarten et al. (2010) demonstrated >70% furfural yield in biphasic systems.",
+          products:["Furfural"],
+          yieldNote:"Theoretical: 72.7 g furfural per 100 g xylose. Practical: 50–65% of theoretical.",
+          analytics:["HPLC — xylose consumption, furfural, HMF","GC-MS — furan derivatives","UV-Vis — furfural quantification","Humin mass balance"]
+        },
+        "Pyrolysis":{
+          desc:"Thermal decomposition of biomass at 300–700°C under inert atmosphere produces biochar, bio-oil, and syngas.",
+          mechanism:"Cellulose decomposes primarily via levoglucosan intermediate (300–400°C). Hemicellulose degrades first (220–315°C) producing furfural and acetic acid. Lignin decomposes over a wide range (200–500°C) yielding phenolics. Char forms via aromatization and polycondensation.",
+          literature:"Bridgwater (2012) reviewed pyrolysis technologies. Mohan et al. (2006) provided comprehensive bio-oil characterization. Lehmann & Joseph (2015) edited the standard biochar reference.",
+          products:["Biochar"],
+          yieldNote:"Slow pyrolysis: 25–35% char yield. Fast pyrolysis: 60–75% bio-oil, 12–20% char.",
+          analytics:["TGA/DTG — thermal decomposition profile","BET — char surface area","SEM — char pore morphology","Proximate/ultimate analysis","GC-MS — bio-oil composition"]
+        }
+      },
+      products:{
+        "Ethanol":{emoji:"⛽",uses:"Biofuel, fuel additive, solvent, chemical feedstock",value:"$0.50–0.80/L",importance:"2G cellulosic ethanol reduces GHG by 60–90% vs. gasoline (Wang et al., 2012). Key renewable fuel under US RFS2 and EU RED II."},
+        "Biogas":{emoji:"🔥",uses:"Heat, power (CHP), biomethane for grid injection, vehicle fuel",value:"$0.20–0.50/m³ CH₄",importance:"Waste-to-energy pathway that simultaneously manages residues and produces renewable energy. Digestate provides nutrient recycling (Holm-Nielsen et al., 2009)."},
+        "Furfural":{emoji:"🧪",uses:"Platform chemical for furfuryl alcohol, furan resins, THF, pharmaceutical intermediates",value:"$1,000–1,500/tonne",importance:"One of the few industrial chemicals produced exclusively from biomass. Global market ~300 kt/year. Gateway to the furan chemical platform (Mariscal et al., 2016)."},
+        "Biochar":{emoji:"ite",uses:"Soil amendment, carbon sequestration, water filtration, energy storage",value:"$200–2,000/tonne",importance:"Highly stable carbon form (MRT 100–1000+ years). Recognized by IPCC as negative emission technology. Improves soil water retention (Lehmann et al., 2011)."}
+      }
+    },
+    "OFMSW (Organic Waste)": {
+      emoji:"♻️", desc:"Organic Fraction of Municipal Solid Waste — heterogeneous, high-moisture urban feedstock with enormous global volumes.",
+      composition:{Cellulose:22,Hemicellulose:14,Lignin:9,Ash:18,Extractives:37},
+      literature:"Alibardi & Cossu (2015) characterized OFMSW composition across seasons. Global generation: ~2 billion tonnes/year MSW, of which 40–60% is organic (Kaza et al., 2018, World Bank).",
+      pretreatments:{
+        "Hydrothermal":{
+          desc:"Hot compressed water (150–250°C) under autogenous pressure solubilizes organics and sterilizes substrate.",
+          mechanism:"Subcritical water acts as both solvent and catalyst. Proteins denature, carbohydrates depolymerize, lipids hydrolyze. Maillard reactions can occur between amino acids and sugars.",
+          conditions:"150–250°C, 10–60 min, autogenous pressure (5–40 bar).",
+          pros:["No chemical input needed","Sterilizes substrate","Effective on wet, heterogeneous feedstocks"],
+          cons:["Energy-intensive heating","Can produce recalcitrant melanoidins","High-pressure equipment"],
+          literature:"Becker et al. (2014) reviewed hydrothermal treatment of biowaste. Ariunbaatar et al. (2014) showed 30–50% BMP increase for food waste after thermal pretreatment.",
+          nanoChanges:"Cell structure collapse visible via SEM. Protein denaturation confirmed by DSC. Soluble COD increases dramatically.",
+          analytics:["sCOD/tCOD ratio","Particle size analysis","BMP increase measurement","DSC — protein denaturation","TOC/TN in liquid phase"]
+        },
+        "Mild Acid":{
+          desc:"Low-concentration acid (0.5–2%) at moderate temperature to hydrolyze accessible carbohydrates.",
+          mechanism:"Proton-catalyzed hydrolysis of glycosidic bonds in accessible fractions. Starch and hemicellulose are primary targets.",
+          conditions:"0.5–2% acid, 80–140°C, 15–60 min.",
+          pros:["Good sugar solubilization","Relatively simple","Effective on starch-rich fractions"],
+          cons:["Inhibitor generation","Acid handling","Variable results due to heterogeneity"],
+          literature:"López-Gómez et al. (2020) applied mild acid to food waste for VFA production.",
+          nanoChanges:"Starch granule disruption visible. Surface erosion of cellulosic fibers.",
+          analytics:["HPLC — sugar and inhibitor profiling","pH monitoring","COD fractionation","Microscopy — starch disruption"]
+        },
+        "Mechanical Sorting":{
+          desc:"Physical separation and size reduction to remove inerts and homogenize the organic fraction.",
+          mechanism:"Trommels, ballistic separators, magnetic/eddy current separators, and shredders produce clean, size-reduced organic pulp. Critical for all downstream routes.",
+          conditions:"Ambient temperature. Trommel screens (40–80 mm), shredders to <20 mm.",
+          pros:["Removes contaminants","Improves consistency","Required for all routes"],
+          cons:["Cannot remove dissolved contaminants","Some organic loss","Equipment wear"],
+          literature:"Cesaro et al. (2015) reviewed mechanical pretreatment of MSW. Size reduction alone can increase BMP by 10–20%.",
+          nanoChanges:"Particle size reduction increases surface-to-volume ratio. No chemical changes. Homogenization improves microbial access.",
+          analytics:["Particle size distribution","Contamination level (% inerts)","TS/VS of sorted fraction","Visual/NIR sorting efficiency"]
+        },
+        "Enzymatic Conditioning":{
+          desc:"Commercial enzyme cocktails (amylases, proteases, lipases) pre-digest the complex organic matrix.",
+          mechanism:"Targeted enzymatic hydrolysis: α-amylase breaks starch, proteases cleave peptide bonds, lipases hydrolyze triglycerides. Converts polymeric substrates to fermentable forms without harsh chemistry.",
+          conditions:"pH 4.5–7.0, 40–55°C, 2–24 hours, enzyme loading 0.1–1% w/w.",
+          pros:["Selective and mild","No inhibitor generation","Compatible with biological downstream"],
+          cons:["Enzyme cost","Requires consistent pH/temperature","Slower than thermochemical"],
+          literature:"Kiran et al. (2014) reviewed enzyme-assisted hydrolysis of food waste. Moon et al. (2011) demonstrated enhanced VFA production with multi-enzyme pretreatment.",
+          nanoChanges:"Starch granule erosion, protein matrix disruption, lipid droplet breakdown all visible at microscale.",
+          analytics:["Reducing sugar assay (DNS)","Soluble protein (Bradford/Lowry)","Free fatty acid analysis","Viscosity reduction"]
+        }
+      },
+      conversions:{
+        "Acidogenic Fermentation":{
+          desc:"Mixed-culture fermentation under suppressed methanogenesis to accumulate volatile fatty acids (VFAs).",
+          mechanism:"Hydrolytic and acidogenic bacteria convert soluble organics into short-chain carboxylic acids: acetic (C2), propionic (C3), butyric (C4), valeric (C5). pH control (5–6), short HRT, and/or inhibitors suppress methanogens.",
+          literature:"Lee et al. (2014) reviewed VFA production from food waste. Atasoy et al. (2018) mapped pH effect on VFA spectrum.",
+          products:["VFAs"],
+          yieldNote:"0.3–0.6 g VFA/g VS fed.",
+          analytics:["GC-FID — individual VFA quantification","HPLC — organic acid profiling","pH/ORP monitoring","COD balance","16S rRNA microbial community analysis"]
+        },
+        "Chain Elongation":{
+          desc:"Biological extension of short-chain VFAs (C2–C4) to medium-chain carboxylic acids (C6–C8) using an electron donor.",
+          mechanism:"Reverse β-oxidation: acetyl-CoA units sequentially added to short-chain acids. Ethanol or lactate as electron donor. Key organisms: Clostridium kluyveri, Megasphaera spp. Ethanol + acetate → butyrate → caproate (C6) → caprylate (C8).",
+          literature:"Angenent et al. (2016) defined the carboxylate platform. Steinbusch et al. (2011) demonstrated caproate production. De Leeuw et al. (2019) achieved >40% caprylate selectivity.",
+          products:["MCCAs"],
+          yieldNote:"0.05–0.15 g MCCA/g VS. Lower mass yield but higher value.",
+          analytics:["GC-FID — C2-C8 profiling","Ethanol/lactate tracking","pH and redox monitoring","Microbial community profiling","Extraction efficiency"]
+        },
+        "Anaerobic Digestion":{
+          desc:"Complete anaerobic conversion of organics to biogas by mixed microbial consortia.",
+          mechanism:"Hydrolysis → acidogenesis → acetogenesis → methanogenesis. High protein in OFMSW means ammonia inhibition is key concern. Two-stage systems can improve stability.",
+          literature:"De Baere & Mattheeuws (2012) reviewed industrial OFMSW digestion (>500 plants in Europe). Mata-Alvarez et al. (2014) covered co-digestion strategies.",
+          products:["Biogas"],
+          yieldNote:"OFMSW BMP: 300–500 NL CH₄/kg VS.",
+          analytics:["GC — biogas composition","TS/VS destruction","Ammonia-N monitoring","VFA/alkalinity ratio","pH, temperature logging"]
+        },
+        "Mixed-Culture Fermentation":{
+          desc:"Controlled fermentation using undefined microbial communities to produce lactic acid.",
+          mechanism:"Lactic acid bacteria (LAB) dominate at low pH with fermentable carbohydrates. Homofermentative LAB produce 2 mol lactate/mol glucose; heterofermentative co-produce ethanol and CO₂.",
+          literature:"Probst et al. (2015) reviewed open-culture lactic acid production. Li et al. (2018) demonstrated >0.5 g/g yield from food waste.",
+          products:["Lactic Acid"],
+          yieldNote:"0.3–0.6 g lactic acid/g fermentable sugar.",
+          analytics:["HPLC — lactic acid, residual sugars","Optical rotation — L/D ratio","pH tracking","OD600 cell density"]
+        }
+      },
+      products:{
+        "VFAs":{emoji:"🧫",uses:"PHA bioplastics precursor, chain elongation feed, BNR, biofuel precursor",value:"$1,000–2,500/tonne",importance:"Cornerstone of the carboxylate platform — replacing petrochemical acids with waste-derived equivalents (Agler et al., 2011)."},
+        "MCCAs":{emoji:"⛓️",uses:"Antimicrobials, lubricants, fragrance precursors, aviation fuel precursors",value:"$2,000–4,000/tonne",importance:"High-value drop-in replacements for palm kernel oil derivatives. Reduces fossil and palm oil dependence (Angenent et al., 2016)."},
+        "Biogas":{emoji:"🔥",uses:"CHP, biomethane, vehicle fuel, grid injection",value:"$0.20–0.50/m³ CH₄",importance:"Mature technology with >17,000 plants in Europe. Proven waste-to-energy with nutrient recycling via digestate."},
+        "Lactic Acid":{emoji:"🔬",uses:"PLA bioplastics, food preservative, pharmaceutical, cosmetics",value:"$1,200–1,800/tonne",importance:"Monomer for PLA — the leading bioplastic. Global market growing >10%/year. Waste-derived LA could drastically reduce costs (Jem & Tan, 2020)."}
+      }
+    },
+    "Wheat Straw": {
+      emoji:"🌾", desc:"Cereal straw from wheat harvest — globally abundant, well-characterized, and a primary European 2G feedstock.",
+      composition:{Cellulose:35,Hemicellulose:26,Lignin:19,Ash:8,Extractives:12},
+      literature:"Talebnia et al. (2010) provided a comprehensive review of wheat straw bioconversion. Annual global availability: 500+ million tonnes. High silica content in ash is a distinctive feature.",
+      pretreatments:{
+        "Alkaline":{desc:"NaOH/KOH treatment to remove lignin and swell cellulose, optimized for straw's silica.",mechanism:"Hydroxide ions cleave ester bonds in LCCs and partially solubilize lignin. Silica partially dissolved. Cellulose swells.",conditions:"2–8% NaOH, 60–121°C, 30 min to 4 hours.",pros:["Good lignin removal","Silica dissolution helps","Preserves carbohydrates"],cons:["Alkali consumption by silica","Black liquor treatment","Long times"],literature:"Sun & Tomkinson (2002) achieved >60% delignification. Silverstein et al. (2007) compared pretreatment methods for wheat straw.",nanoChanges:"Lignin removal exposes microfibrils. 2–5× surface area increase.",analytics:["Klason lignin pre/post","FTIR — aromatic bands","BET surface area","ICP-OES silica","Digestibility test"]},
+        "Dilute Acid":{desc:"Dilute sulfuric acid at elevated temperature for hemicellulose hydrolysis.",mechanism:"Selective hemicellulose removal. High xylan content means substantial xylose recovery.",conditions:"0.5–2% H₂SO₄, 130–180°C, 10–30 min.",pros:["High xylose recovery","Well-established","Effective cellulose exposure"],cons:["Inhibitor formation","Corrosion","Silica precipitation possible"],literature:"Saha et al. (2005) optimized dilute acid pretreatment of wheat straw.",nanoChanges:"Pore opening, surface roughening, crystallinity increase.",analytics:["HPLC — sugars and inhibitors","SEM — morphology","XRD — crystallinity","Fiber analysis"]},
+        "Steam Explosion":{desc:"Autohydrolytic treatment + explosive decompression — effective for wheat straw.",mechanism:"Wax layer disrupted. Autohydrolysis of hemicellulose. Fiber shattering.",conditions:"180–220°C, 2–10 min, rapid decompression.",pros:["No chemicals","Effective fiber opening","Scalable"],cons:["Sugar degradation risk","Inhibitors","Energy cost"],literature:"Ballesteros et al. (2006) demonstrated effective SE at 190°C/10 min for wheat straw.",nanoChanges:"Explosive fiber disruption. Microfibrils exposed. Wax removed.",analytics:["SEM — fiber disruption","HPLC — sugar analysis","WRV","Severity optimization"]},
+        "DES (Deep Eutectic Solvents)":{desc:"Green chemistry using choline chloride + lactic acid to selectively dissolve lignin.",mechanism:"DES forms hydrogen bonds with lignin, preferentially dissolving it while leaving cellulose intact. High hydrogen-bond donation capacity disrupts LCCs. DES recyclable by anti-solvent precipitation.",conditions:"ChCl:lactic acid (1:10), 60–130°C, 2–24 hours.",pros:["Selective lignin removal","Recyclable","Mild conditions","Green chemistry"],cons:["Higher cost","Viscosity challenges","Early-stage technology"],literature:"Francisco et al. (2012) pioneered DES for lignin. Alvarez-Vasco et al. (2016) demonstrated DES pretreatment. Chen & Mu (2019) reviewed DES in biomass processing.",nanoChanges:"Selective lignin removal leaves cellulose-rich residue. High-purity lignin recovered.",analytics:["Lignin quantification","FTIR — lignin vs cellulose","NMR — lignin structure","DES recovery rate","Digestibility improvement"]}
+      },
+      conversions:{
+        "Enzymatic Hydrolysis + SHF":{desc:"Separate Hydrolysis and Fermentation — enzymes at optimal temp, then separate fermentation.",mechanism:"Hydrolysis at 45–50°C (enzyme optimum), then cooling to 30–37°C for fermentation. Each step at kinetic optimum but sugar accumulation may inhibit enzymes.",literature:"Olofsson et al. (2008) compared SHF vs SSF for wheat straw ethanol.",products:["Ethanol"],yieldNote:"Similar overall yield to SSF but potentially faster individual steps.",analytics:["HPLC — time-course sugar/ethanol","Enzyme activity assays","Fermentation kinetics"]},
+        "Mechanical Fibrillation":{desc:"High-energy processing (microfluidization, grinding) to produce nanocellulose from purified cellulose pulp.",mechanism:"After chemical purification, cellulose fibers pass through high-shear zones. Mechanical energy overcomes hydrogen bonds between microfibrils, producing CNF (5–50 nm) or CNC (5–20 nm width).",literature:"Turbak et al. (1983) pioneered microfibrillated cellulose. Klemm et al. (2011) reviewed nanocellulose. Isogai et al. (2011) developed TEMPO-oxidation-assisted fibrillation.",products:["Nanocellulose"],yieldNote:"CNF: 80–95% of input cellulose. CNC: 30–70%.",analytics:["TEM — fibril dimensions","AFM — surface morphology","XRD — crystallinity","Rheology — gel strength","Zeta potential"]},
+        "Catalytic Dehydration":{desc:"Acid-catalyzed pentose-to-furfural conversion.",mechanism:"Same dehydration chemistry. Wheat straw's high xylan (20–26%) makes it excellent furfural feedstock.",literature:"Yemiş & Mazza (2011) used wheat straw for furfural production.",products:["Furfural"],yieldNote:"Good potential due to high xylan content.",analytics:["HPLC — xylose and furfural","GC-MS — byproducts","Mass balance"]},
+        "Pyrolysis":{desc:"Thermal conversion to biochar, bio-oil, syngas.",mechanism:"Same decomposition principles. Higher ash/silica produces mineral-rich biochar for specific soil uses.",literature:"Uchimiya et al. (2011) characterized wheat straw biochar for heavy metal immobilization.",products:["Biochar"],yieldNote:"Slow pyrolysis 400–500°C: 25–30% char yield, high mineral content.",analytics:["TGA — thermal profile","BET — surface area","ICP-OES — minerals","CHNS analysis"]}
+      },
+      products:{
+        "Ethanol":{emoji:"⛽",uses:"Biofuel, chemical feedstock",value:"$0.50–0.80/L",importance:"Basis for multiple European commercial 2G plants including Clariant's sunliquid® process in Romania."},
+        "Nanocellulose":{emoji:"🔬",uses:"Packaging reinforcement, biomedical scaffolds, rheology modifiers, flexible electronics, barrier films",value:"$50–100/kg (research), dropping toward $5–15/kg at scale",importance:"Highest-value cellulose derivative. Strength-to-weight exceeds Kevlar. Transparent films approach glass properties (Moon et al., 2011)."},
+        "Furfural":{emoji:"🧪",uses:"Platform chemical, resin precursor, solvent",value:"$1,000–1,500/tonne",importance:"Established bio-based chemical with growing demand for sustainable furan-derived materials."},
+        "Biochar":{emoji:"ite",uses:"Soil carbon sequestration, heavy metal immobilization, water treatment",value:"$200–2,000/tonne",importance:"Silica-rich biochar from wheat straw has unique properties for heavy metal binding and soil pH management."}
+      }
+    }
+  };
+
+  const compColors = {Cellulose:"#87f0d1",Hemicellulose:"#79a8ff",Lignin:"#ff9800",Ash:"#a78bfa",Extractives:"#8a94b8"};
+
+  function bpeToggle(id){
+    BPE.expandedSections[id] = !BPE.expandedSections[id];
+    const body = document.getElementById('bpe-exp-body-'+id);
+    const arrow = document.getElementById('bpe-exp-arrow-'+id);
+    if(body){ body.classList.toggle('open'); }
+    if(arrow){ arrow.classList.toggle('open'); }
+  }
+
+  function bpeExpander(id, title, content, openByDefault){
+    const isOpen = BPE.expandedSections[id] !== undefined ? BPE.expandedSections[id] : !!openByDefault;
+    if(openByDefault && BPE.expandedSections[id] === undefined) BPE.expandedSections[id] = true;
+    return `<div class="bpe-expander">
+      <button class="bpe-expander-head" onclick="bpeToggle('${id}')">
+        ${title}
+        <span class="bpe-expander-arrow ${isOpen?'open':''}" id="bpe-exp-arrow-${id}">▼</span>
+      </button>
+      <div class="bpe-expander-body ${isOpen?'open':''}" id="bpe-exp-body-${id}">${content}</div>
+    </div>`;
+  }
+
+  function bpeRestart(){ BPE.step=0; BPE.feedstock=null; BPE.pretreatment=null; BPE.conversion=null; BPE.product=null; BPE.mass=1000; BPE.expandedSections={}; bpeRender(); }
+  function bpeBack(){ BPE.step = Math.max(0, BPE.step-1); bpeRender(); }
+  function bpeNext(){ if(bpeCanProceed()) { BPE.step = Math.min(STEPS.length-1, BPE.step+1); bpeRender(); } }
+  function bpeSelectFeedstock(n){ BPE.feedstock=n; BPE.pretreatment=null; BPE.conversion=null; BPE.product=null; BPE.expandedSections={}; bpeRender(); }
+  function bpeSelectPretreatment(n){ BPE.pretreatment=(BPE.pretreatment===n?null:n); BPE.expandedSections={}; bpeRender(); }
+  function bpeSelectConversion(n){ BPE.conversion=(BPE.conversion===n?null:n); BPE.product=null; BPE.expandedSections={}; bpeRender(); }
+  function bpeSelectProduct(n){ BPE.product=n; bpeRender(); }
+  function bpeMassChange(v){ BPE.mass = Math.max(0, Number(v)||0); bpeRender(); }
+
+  function bpeCanProceed(){
+    if(BPE.step===0) return !!BPE.feedstock;
+    if(BPE.step===1) return !!BPE.pretreatment;
+    if(BPE.step===2) return !!BPE.conversion;
+    if(BPE.step===3) return !!BPE.product && BPE.mass>0;
+    return true;
+  }
+
+  function bpeGetYield(){
+    const yMap = {Ethanol:0.24,Biogas:0.42,Furfural:0.11,Biochar:0.30,VFAs:0.18,MCCAs:0.10,"Lactic Acid":0.16,Nanocellulose:0.14};
+    const factor = yMap[BPE.product]||0.15;
+    let eff = 65;
+    if(["AFEX","Steam Explosion","Hydrothermal","DES (Deep Eutectic Solvents)"].includes(BPE.pretreatment)) eff+=10;
+    else if(["Alkaline","Dilute Acid","Mild Acid"].includes(BPE.pretreatment)) eff+=6;
+    else eff+=3;
+    if(BPE.conversion && (BPE.conversion.includes("SSF")||BPE.conversion.includes("Enzymatic"))) eff+=8;
+    else if(BPE.conversion && BPE.conversion.includes("Chain")) eff+=5;
+    else eff+=3;
+    eff = Math.min(eff, 90);
+    const output = Math.round(BPE.mass * factor * (eff/100));
+    return {factor, eff, output, residual: BPE.mass - output};
+  }
+
+  function bpeRender(){
+    // Steps indicator
+    const stepsEl = document.getElementById('bpeSteps');
+    stepsEl.innerHTML = STEPS.map((s,i) => {
+      const done = i < BPE.step;
+      const active = i === BPE.step;
+      const cls = done ? 'done' : active ? 'active' : 'pending';
+      let label = s.label;
+      if(done){
+        if(s.id==='feedstock' && BPE.feedstock) label = BPE.feedstock.split(' ').slice(0,2).join(' ');
+        if(s.id==='pretreatment' && BPE.pretreatment) label = BPE.pretreatment.split(' ').slice(0,2).join(' ');
+        if(s.id==='conversion' && BPE.conversion) label = BPE.conversion.split(' ').slice(0,2).join(' ');
+        if(s.id==='product' && BPE.product) label = BPE.product;
+      }
+      return `<div class="bpe-step-pill ${cls}">${done?'✓':s.icon} ${label}</div>` +
+             (i < STEPS.length-1 ? `<span class="bpe-step-arrow ${done?'done':''}">→</span>` : '');
+    }).join('');
+
+    // Content
+    const content = document.getElementById('bpeContent');
+    content.scrollTop = 0;
+    switch(BPE.step){
+      case 0: content.innerHTML = bpeStepFeedstock(); break;
+      case 1: content.innerHTML = bpeStepPretreatment(); break;
+      case 2: content.innerHTML = bpeStepConversion(); break;
+      case 3: content.innerHTML = bpeStepProduct(); break;
+      case 4: content.innerHTML = bpeStepResults(); break;
+    }
+
+    // Footer buttons
+    document.getElementById('bpeBackBtn').disabled = BPE.step === 0;
+    document.getElementById('bpeStepCount').textContent = `Step ${BPE.step+1} of ${STEPS.length}`;
+    const nextBtn = document.getElementById('bpeNextBtn');
+    if(BPE.step < STEPS.length-1){
+      nextBtn.textContent = 'Next →';
+      nextBtn.onclick = bpeNext;
+      nextBtn.disabled = !bpeCanProceed();
+      nextBtn.className = 'bpe-btn primary';
+    } else {
+      nextBtn.textContent = '↺ New Pathway';
+      nextBtn.onclick = bpeRestart;
+      nextBtn.disabled = false;
+      nextBtn.className = 'bpe-btn primary';
+    }
+  }
+
+  function bpeStepFeedstock(){
+    const fd = BPEDATA;
+    let h = '<h2>Choose Your Feedstock</h2>';
+    h += '<p class="bpe-desc">Select the biomass or organic waste you want to convert. Each feedstock has a unique composition that determines viable conversion routes and products.</p>';
+    h += '<div class="bpe-options">';
+    Object.entries(fd).forEach(([name, data]) => {
+      const sel = BPE.feedstock === name;
+      h += `<div class="bpe-option ${sel?'selected':''}" onclick="bpeSelectFeedstock('${name}')">
+        <div class="bpe-opt-head"><span class="bpe-opt-emoji">${data.emoji}</span><span class="bpe-opt-name">${name}</span></div>
+        <p class="bpe-opt-desc">${data.desc}</p>
+        <div class="bpe-comp-row">`;
+      Object.entries(data.composition).forEach(([k,v]) => {
+        h += `<div class="bpe-comp-item"><div class="bpe-comp-bar"><div class="bpe-comp-fill" style="width:${v*1.5}%;background:${compColors[k]||'#888'}"></div></div>${k} ${v}%</div>`;
+      });
+      h += '</div></div>';
+    });
+    h += '</div>';
+    if(BPE.feedstock && fd[BPE.feedstock]){
+      h += bpeExpander('feed-lit','📚 Literature & Background', '<p>'+fd[BPE.feedstock].literature+'</p>', true);
+    }
+    return h;
+  }
+
+  function bpeStepPretreatment(){
+    const data = BPEDATA[BPE.feedstock];
+    if(!data) return '<p>Please select a feedstock first.</p>';
+    let h = `<h2>Select Pretreatment for ${BPE.feedstock} ${data.emoji}</h2>`;
+    h += '<p class="bpe-desc">Pretreatment is the critical first processing step that breaks open the biomass structure, making target components accessible for downstream conversion.</p>';
+    h += '<div class="bpe-pills">';
+    Object.keys(data.pretreatments).forEach(name => {
+      h += `<button class="bpe-pill ${BPE.pretreatment===name?'active':''}" onclick="bpeSelectPretreatment('${name}')">${name}</button>`;
+    });
+    h += '</div>';
+    if(BPE.pretreatment && data.pretreatments[BPE.pretreatment]){
+      const pt = data.pretreatments[BPE.pretreatment];
+      h += `<div class="bpe-info-card"><h3>${BPE.pretreatment}</h3><p>${pt.desc}</p></div>`;
+      h += bpeExpander('pt-mech','🔬 Detailed Mechanism', `<p>${pt.mechanism}</p><p style="margin-top:10px"><strong>Conditions:</strong> ${pt.conditions}</p>`, true);
+      if(pt.pros && pt.cons){
+        h += bpeExpander('pt-proscons','✅ Advantages & ⚠️ Limitations',
+          `<div class="bpe-proscons"><div><strong style="color:#87f0d1">Advantages</strong>${pt.pros.map(p=>'<p>✅ '+p+'</p>').join('')}</div><div><strong style="color:#ff9800">Limitations</strong>${pt.cons.map(c=>'<p>⚠️ '+c+'</p>').join('')}</div></div>`);
+      }
+      if(pt.nanoChanges) h += bpeExpander('pt-nano','🔬 Nanoscale & Structural Changes','<p>'+pt.nanoChanges+'</p>');
+      if(pt.literature) h += bpeExpander('pt-lit','📚 Literature References','<p>'+pt.literature+'</p>');
+      if(pt.analytics) h += bpeExpander('pt-anal','📏 Analytical Techniques', pt.analytics.map(a=>'<p>• '+a+'</p>').join(''));
+    }
+    return h;
+  }
+
+  function bpeStepConversion(){
+    const data = BPEDATA[BPE.feedstock];
+    if(!data) return '<p>Please select a feedstock first.</p>';
+    let h = '<h2>Choose Conversion Route</h2>';
+    h += '<p class="bpe-desc">After pretreatment opens up the biomass structure, the conversion step transforms intermediates into your target product. This is where the core biochemistry or thermochemistry happens.</p>';
+    h += '<div class="bpe-pills">';
+    Object.keys(data.conversions).forEach(name => {
+      h += `<button class="bpe-pill ${BPE.conversion===name?'active':''}" onclick="bpeSelectConversion('${name}')">${name}</button>`;
+    });
+    h += '</div>';
+    if(BPE.conversion && data.conversions[BPE.conversion]){
+      const cv = data.conversions[BPE.conversion];
+      h += `<div class="bpe-info-card blue"><h3>${BPE.conversion}</h3><p>${cv.desc}</p></div>`;
+      h += bpeExpander('cv-mech','🔬 Detailed Mechanism & Biochemistry','<p>'+cv.mechanism+'</p>', true);
+      if(cv.literature) h += bpeExpander('cv-lit','📚 Key Literature','<p>'+cv.literature+'</p>');
+      if(cv.analytics) h += bpeExpander('cv-anal','📏 Analytical Methods', cv.analytics.map(a=>'<p>• '+a+'</p>').join(''));
+      if(cv.yieldNote) h += bpeExpander('cv-yield','📈 Yield Information', '<p>'+cv.yieldNote+'</p><p style="margin-top:8px"><strong>Target products:</strong> '+cv.products.join(', ')+'</p>');
+    }
+    return h;
+  }
+
+  function bpeStepProduct(){
+    const data = BPEDATA[BPE.feedstock];
+    const cv = data && BPE.conversion ? data.conversions[BPE.conversion] : null;
+    if(!data || !cv) return '<p>Please complete previous steps.</p>';
+    const available = cv.products.filter(p => data.products[p]);
+    let h = '<h2>Select Target Product & Input Mass</h2>';
+    h += '<p class="bpe-desc">Choose the final product and specify your feedstock quantity. The tool estimates yields based on your entire pathway configuration.</p>';
+    h += '<div class="bpe-pills">';
+    available.forEach(name => {
+      const pr = data.products[name];
+      h += `<button class="bpe-pill ${BPE.product===name?'active':''}" onclick="bpeSelectProduct('${name}')">${pr?pr.emoji:''} ${name}</button>`;
+    });
+    h += '</div>';
+    if(BPE.product && data.products[BPE.product]){
+      const pr = data.products[BPE.product];
+      h += `<div class="bpe-info-card orange"><div style="font-size:28px;margin-bottom:8px">${pr.emoji}</div><h3>${BPE.product}</h3>
+        <p><strong>Uses:</strong> ${pr.uses}</p>
+        <p style="margin-top:6px"><strong>Market value:</strong> ${pr.value}</p></div>`;
+      h += bpeExpander('pr-imp','🌍 Importance & Market Context','<p>'+pr.importance+'</p>', true);
+    }
+    h += `<div style="margin-top:18px;padding:18px;border-radius:16px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02)">
+      <label style="color:#8a94b8;font-size:12px;display:block;margin-bottom:8px">Biomass Input (kg)</label>
+      <input class="bpe-mass-input" type="number" min="1" value="${BPE.mass}" oninput="bpeMassChange(this.value)">
+    </div>`;
+    return h;
+  }
+
+  function bpeStepResults(){
+    const data = BPEDATA[BPE.feedstock];
+    if(!data || !BPE.pretreatment || !BPE.conversion || !BPE.product) return '<div style="text-align:center;padding:40px"><p style="font-size:28px;margin-bottom:8px">⚠️</p><p style="color:#8a94b8">Please complete all selections.</p></div>';
+    const pt = data.pretreatments[BPE.pretreatment];
+    const cv = data.conversions[BPE.conversion];
+    const pr = data.products[BPE.product];
+    const y = bpeGetYield();
+
+    let h = '<h2>Complete Pathway Results</h2>';
+    h += `<p class="bpe-desc">Full analysis of your biorefinery pathway from ${BPE.feedstock} to ${BPE.product}.</p>`;
+
+    // Chain
+    h += `<div class="bpe-chain">
+      <span class="bpe-chain-item" style="background:rgba(135,240,209,0.12)">${data.emoji} ${BPE.feedstock}</span>
+      <span class="bpe-chain-arrow">→</span>
+      <span class="bpe-chain-item" style="background:rgba(121,168,255,0.12)">⚗️ ${BPE.pretreatment}</span>
+      <span class="bpe-chain-arrow">→</span>
+      <span class="bpe-chain-item" style="background:rgba(167,139,250,0.12)">⚙️ ${BPE.conversion}</span>
+      <span class="bpe-chain-arrow">→</span>
+      <span class="bpe-chain-item" style="background:rgba(249,115,22,0.12)">${pr.emoji} ${BPE.product}</span>
+    </div>`;
+
+    // Metrics
+    h += '<div class="bpe-metrics">';
+    [{l:"Input",v:BPE.mass.toLocaleString()+' kg',c:"#8a94b8"},{l:"Product Output",v:y.output.toLocaleString()+' kg',c:"#87f0d1"},{l:"Conversion Eff.",v:y.eff+'%',c:"#79a8ff"},{l:"Residuals",v:y.residual.toLocaleString()+' kg',c:"#ff9800"}].forEach(m => {
+      h += `<div class="bpe-metric-card"><div class="bpe-metric-label">${m.l}</div><div class="bpe-metric-value" style="color:${m.c}">${m.v}</div></div>`;
+    });
+    h += '</div>';
+
+    // Composition
+    let compH = '';
+    Object.entries(data.composition).forEach(([k,v]) => {
+      compH += `<div class="bpe-bar-wrap"><div class="bpe-bar-head"><span style="color:#8a94b8">${k}</span><span style="color:#eef3ff;font-weight:700">${v}%</span></div><div class="bpe-bar-track"><div class="bpe-bar-fill" style="width:${v*1.5}%;background:${compColors[k]||'#888'}"></div></div></div>`;
+    });
+    h += bpeExpander('res-comp', '📊 '+BPE.feedstock+' Composition Profile', compH, true);
+
+    // Pretreatment details
+    let ptH = `<h4 style="color:#eef3ff;margin-bottom:6px">${BPE.pretreatment}</h4><p>${pt.desc}</p>`;
+    ptH += `<p style="margin-top:10px"><strong>Mechanism:</strong> ${pt.mechanism}</p>`;
+    ptH += `<p style="margin-top:10px"><strong>Conditions:</strong> ${pt.conditions}</p>`;
+    if(pt.nanoChanges) ptH += `<p style="margin-top:10px"><strong>Nanoscale changes:</strong> ${pt.nanoChanges}</p>`;
+    if(pt.literature) ptH += `<p style="margin-top:10px"><strong>Literature:</strong> ${pt.literature}</p>`;
+    if(pt.analytics) ptH += `<p style="margin-top:10px"><strong>Analytics:</strong></p>` + pt.analytics.map(a=>'<p style="margin:2px 0 2px 14px">• '+a+'</p>').join('');
+    h += bpeExpander('res-pt', '⚗️ Pretreatment: Full Details', ptH);
+
+    // Conversion details
+    let cvH = `<h4 style="color:#eef3ff;margin-bottom:6px">${BPE.conversion}</h4><p>${cv.desc}</p>`;
+    cvH += `<p style="margin-top:10px"><strong>Mechanism:</strong> ${cv.mechanism}</p>`;
+    if(cv.yieldNote) cvH += `<p style="margin-top:10px"><strong>Yield info:</strong> ${cv.yieldNote}</p>`;
+    if(cv.literature) cvH += `<p style="margin-top:10px"><strong>Literature:</strong> ${cv.literature}</p>`;
+    if(cv.analytics) cvH += `<p style="margin-top:10px"><strong>Analytics:</strong></p>` + cv.analytics.map(a=>'<p style="margin:2px 0 2px 14px">• '+a+'</p>').join('');
+    h += bpeExpander('res-cv', '⚙️ Conversion: Full Details', cvH);
+
+    // Product details
+    let prH = `<p><strong>Uses:</strong> ${pr.uses}</p>`;
+    prH += `<p style="margin-top:6px"><strong>Market value:</strong> ${pr.value}</p>`;
+    prH += `<p style="margin-top:6px"><strong>Importance:</strong> ${pr.importance}</p>`;
+    h += bpeExpander('res-pr', '🎯 Product: '+BPE.product+' — Value & Applications', prH);
+
+    // Feedstock literature
+    h += bpeExpander('res-lit', '🌍 Feedstock Literature & Background', '<p>'+data.literature+'</p>');
+
+    // All products
+    let allPrH = '<div class="bpe-product-list">';
+    Object.entries(data.products).forEach(([name,p]) => {
+      allPrH += `<div class="bpe-product-item ${name===BPE.product?'highlight':''}">
+        <strong>${p.emoji} ${name} ${name===BPE.product?'<span style="font-size:10px;color:#87f0d1">(selected)</span>':''}</strong>
+        <span><strong style="color:#c8d4ee">Uses:</strong> ${p.uses}<br><strong style="color:#c8d4ee">Value:</strong> ${p.value}</span>
+      </div>`;
+    });
+    allPrH += '</div>';
+    h += bpeExpander('res-allpr', '📋 All Valuable Products from '+BPE.feedstock, allPrH);
+
+    return h;
+  }
+
+  // Initialize BioPathway Explorer
+  bpeRender();
+
+</script>
+</body>
+</html>
