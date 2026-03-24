@@ -1995,11 +1995,11 @@
     <h2 class="contact-heading">Let's <span style="color: var(--coral);">Connect</span></h2>
     <p class="contact-desc">Whether you want to collaborate on research, discuss sustainability, or explore academic opportunities — I'd love to hear from you.</p>
     <div class="contact-grid">
-      <a href="/cdn-cgi/l/email-protection#f9908a9598c1cbc9ceb98f98979d98958ad78c909d989196d79c9d8c" class="contact-item">
+      <a href="mailto:isla8207@vandals.uidaho.edu" class="contact-item">
         <span class="contact-icon">✉️</span>
         <div class="contact-info">
           <div class="contact-info-label">Email</div>
-          <div class="contact-info-value"><span class="__cf_email__" data-cfemail="345d4758550c0604037442555a505558471a415d50555c5b1a515041">[email&#160;protected]</span></div>
+          <div class="contact-info-value">isla8207@vandals.uidaho.edu</div>
         </div>
       </a>
       <a href="tel:+12089977312" class="contact-item">
@@ -2142,7 +2142,12 @@
         <span class="tr-spinner"></span>
       </button>
     </div>
-
+    <div class="tr-options">
+      <button class="tr-opt active" data-tone="academic">🎓 Academic</button>
+      <button class="tr-opt" data-tone="formal">📋 Formal</button>
+      <button class="tr-opt" data-tone="simple">✏️ Simple</button>
+      <button class="tr-opt" data-tone="research">🔬 Research</button>
+    </div>
 
     <!-- History -->
     <div class="tr-history">
@@ -2182,7 +2187,7 @@
   <p>© 2026 Md Mahfujul Islam · Built with <span class="footer-heart">♥</span> and curiosity</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Scroll reveal animations
   const revealEls = document.querySelectorAll('.reveal');
   const revealObserver = new IntersectionObserver((entries) => {
@@ -2402,13 +2407,11 @@
     if(!wcDrop.contains(e.target) && e.target !== wcInput) { wcDrop.classList.remove('visible'); wcBox.classList.remove('active'); }
   });
   // ===== QUICK NOTES =====
-  function safeGetLS(key, fallback) { try { return JSON.parse(localStorage.getItem(key)); } catch(e) { return null; } }
-  function safeSetLS(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch(e) {} }
-  let qnNotes = safeGetLS('qn_notes') || [];
+  let qnNotes = JSON.parse(localStorage.getItem('qn_notes') || '[]');
   let qnActiveId = null;
   let qnSearchQ = '';
 
-  function qnSave() { safeSetLS('qn_notes', qnNotes); }
+  function qnSave() { localStorage.setItem('qn_notes', JSON.stringify(qnNotes)); }
 
   function qnRenderList() {
     const list = document.getElementById('qnList');
@@ -2499,11 +2502,14 @@
   qnRenderList();
 
   // ===== BANGLA TRANSLATOR =====
-  let trHistory = safeGetLS('tr_history') || [];
+  let trHistory = JSON.parse(localStorage.getItem('tr_history') || '[]');
   let trTone = 'academic';
 
   const TONE_PROMPTS = {
-    academic: 'You are an expert multilingual translator and academic Bangla editor. Transform the given text into polished, formal, academically strong Bangla. Requirements: meaning must remain accurate, tone must be formal and scholarly, wording must be refined, sentence flow must be smooth, technical and research-related terms must remain precise, avoid literal translation when unnatural, remove fillers repetition and spoken-language noise, make the final output publication-ready in tone. Return only the final Bangla text.'
+    academic: 'You are an expert multilingual translator and academic Bangla editor. Transform the given text into polished, formal, academically strong Bangla. Requirements: meaning must remain accurate, tone must be formal and scholarly, wording must be refined, sentence flow must be smooth, technical and research-related terms must remain precise, avoid literal translation when unnatural, remove fillers repetition and spoken-language noise, make the final output publication-ready in tone. Return only the final Bangla text.',
+    formal: 'You are a professional Bangla translator. Convert the following text into clear, formal Bangla suitable for official documents and professional communication. Maintain accuracy, use proper grammar, and ensure natural flow. Return only the Bangla text.',
+    simple: 'You are a Bangla translator. Convert the following text into simple, easy-to-understand Bangla. Keep sentences short and clear. Use everyday vocabulary. Return only the Bangla text.',
+    research: 'You are a scientific Bangla translator specializing in environmental science and research. Convert the following text into precise, research-grade academic Bangla. Maintain all scientific terminology accurately, use standard research paper tone, keep citations and technical terms intact where needed. Return only the Bangla text.'
   };
 
   function trRenderHistory() {
@@ -2517,7 +2523,7 @@
       if (e.target.classList.contains('tr-hist-del')) {
         e.stopPropagation();
         trHistory.splice(+e.target.dataset.i, 1);
-        safeSetLS('tr_history', trHistory);
+        localStorage.setItem('tr_history', JSON.stringify(trHistory));
         trRenderHistory(); return;
       }
       const h = trHistory[+c.dataset.i];
@@ -2528,7 +2534,12 @@
     }));
   }
 
-  // Tone is fixed to academic
+  // Tone selector
+  document.querySelectorAll('.tr-opt').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.tr-opt').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    trTone = b.dataset.tone;
+  }));
 
   // Input char count
   document.getElementById('trInput').addEventListener('input', () => {
@@ -2570,25 +2581,27 @@
 
     try {
       let out = '';
-      // Try Claude API first (works inside Claude.ai)
+      // Try Claude API (works inside Claude.ai), fallback to MyMemory
       try {
         const response = await fetch('https://api.anthropic.com/v1/messages', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 4000, system: TONE_PROMPTS.academic, messages: [{ role: 'user', content: src }] })
+          body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 4000, system: TONE_PROMPTS[trTone], messages: [{ role: 'user', content: src }] })
         });
         if(!response.ok) throw new Error('API error');
         const data = await response.json();
         out = data.content?.map(c => c.text || '').join('') || '';
         if(!out) throw new Error('Empty response');
       } catch(apiErr) {
-        // Silent fallback to MyMemory for GitHub Pages / external hosting
-        const r2 = await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(src.substring(0,500))+'&langpair=en|bn&de=mahfujul.research@gmail.com');
-        const d2 = await r2.json();
-        out = d2.responseData?.translatedText || '';
-        if(!out || out.includes('MYMEMORY WARNING') || out.includes('NO QUERY SPECIFIED')) throw new Error('Fallback failed');
+        document.getElementById('trStatus').textContent = 'Trying backup...';
+        try {
+          const r2 = await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(src.substring(0,500))+'&langpair=en|bn&de=mahfujul.research@gmail.com');
+          const d2 = await r2.json();
+          out = d2.responseData?.translatedText || '';
+          if(!out || out.includes('MYMEMORY WARNING') || out.includes('NO QUERY SPECIFIED')) throw new Error('MyMemory failed');
+          out = '⚠️ Basic translation (MyMemory). For academic-quality translation, use inside Claude.ai:\n\n' + out;
+        } catch(e2) { out = 'Translation service unavailable on external sites. Academic-quality Bangla translation requires Claude.ai environment. Please copy your text and translate inside claude.ai for best results.'; }
       }
-
       document.getElementById('trOutput').innerHTML = out.replace(/\n/g, '<br>');
       document.getElementById('trOutputCount').textContent = out.length + ' chars';
       document.getElementById('trStatus').textContent = 'Done ✓';
@@ -2596,10 +2609,10 @@
       // Save to history
       trHistory.unshift({ src: src.substring(0, 500), out: out.substring(0, 500), tone: trTone, date: new Date().toISOString() });
       if (trHistory.length > 30) trHistory = trHistory.slice(0, 30);
-      safeSetLS('tr_history', trHistory);
+      localStorage.setItem('tr_history', JSON.stringify(trHistory));
       trRenderHistory();
     } catch (err) {
-      document.getElementById('trOutput').innerHTML = '<span style="color:var(--coral)">Translation service temporarily unavailable. Please try again later.</span>';
+      document.getElementById('trOutput').innerHTML = '<span style="color:var(--coral)">Translation service temporarily unavailable on external sites. For academic-quality Bangla translation, use this inside Claude.ai. A basic translation via MyMemory API is being attempted...</span>';
       document.getElementById('trStatus').textContent = 'Error';
     }
     btn.classList.remove('loading'); btn.disabled = false;
@@ -3208,4 +3221,18 @@
     Object.entries(data.products).forEach(([name,p]) => {
       allPrH += `<div class="bpe-product-item ${name===BPE.product?'hl':''}">
         <strong>${p.emoji} ${name} ${name===BPE.product?'<span style="font-size:10px;color:#87f0d1">(selected)</span>':''}</strong>
-        <span><strong style="color:#c8d4ee">Uses:</strong> ${p.uses}<br><strong style="color:#c8d4ee">Value:</stron
+        <span><strong style="color:#c8d4ee">Uses:</strong> ${p.uses}<br><strong style="color:#c8d4ee">Value:</strong> ${p.value}</span>
+      </div>`;
+    });
+    allPrH += '</div>';
+    h += bpeExpander('res-allpr', '📋 All Valuable Products from '+BPE.feedstock, allPrH);
+
+    return h;
+  }
+
+  // Initialize BioPathway Explorer
+  bpeRender();
+
+</script>
+</body>
+</html>
